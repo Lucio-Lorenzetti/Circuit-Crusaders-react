@@ -1,33 +1,39 @@
 import fetch from 'node-fetch';
 import React, { useEffect, useState } from 'react';
 
-function Motos() {
-  const [motos, setMotos] = useState([]);
-  const [total, setTotal] = useState(0);
-  const [countProducts, setCountProducts] = useState(0);
-  const [allProducts, setAllProducts] = useState([]);
+export const Motos = ({
+	allProducts,
+	setAllProducts,
+	countProducts,
+	setCountProducts,
+	total,
+	setTotal,
+}) => {
 
+  const [motos, setMotos] = useState([]);
+  
   useEffect(() => {
     fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
       .then(response => response.json())
       .then(motos => setMotos(motos));
   }, []);
 
-  const addToCart = (product) => {
-    if (allProducts.find(item => item.id === product.id)) {
+  const addToCart = (moto) => {
+    if (allProducts.find(item => item.id === moto.nro_moto)) {
       const products = allProducts.map(item =>
-        item.id === product.id
+        item.id === moto.nro_moto
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
-      setTotal(total + product.price * product.quantity);
-      setCountProducts(countProducts + product.quantity);
+      setTotal(total + moto.monto * moto.quantity);
+      setCountProducts(countProducts + moto.quantity);
       return setAllProducts([...products]);
     }
 
-    setTotal(total + product.price * product.quantity);
-    setCountProducts(countProducts + product.quantity);
-    setAllProducts([...allProducts, product]);
+    setTotal(total + moto.monto * moto.quantity);
+    setCountProducts(countProducts + moto.quantity);
+    setAllProducts([...allProducts, moto]);
+    
   };
   
 
@@ -51,4 +57,3 @@ function Motos() {
     );
 }
 
-export default Motos;
