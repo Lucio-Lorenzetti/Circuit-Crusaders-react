@@ -25,13 +25,13 @@ export const Motos = ({
           ? { ...item, quantity: item.quantity + 1 }
           : item
       );
-      setTotal(total + moto.monto * moto.quantity);
-      setCountProducts(countProducts + moto.quantity);
+      setTotal(parseFloat(total) + parseFloat(moto.monto));
+      setCountProducts(countProducts + 1);
       return setAllProducts([...products]);
     }
 
-    setTotal(total + moto.monto * moto.quantity);
-    setCountProducts(countProducts + moto.quantity);
+    setTotal(parseFloat(total) + parseFloat(moto.monto));
+    setCountProducts(countProducts + 1);
     setAllProducts([...allProducts, moto]);
     
   };

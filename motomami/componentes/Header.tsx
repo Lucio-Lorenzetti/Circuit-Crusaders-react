@@ -10,15 +10,30 @@ export const Header = ({
 }) => {
 	const [active, setActive] = useState(false);
 
-	const onDeleteProduct = moto => {
+	const onDeleteProduct = (moto) => {
+		const existingProduct = allProducts.find((item) => item.nro_moto === moto.nro_moto);
+	  
+		if (!existingProduct) {
+		  return;
+		}
+	  
+		const results = allProducts.filter((item) => item.nro_moto !== moto.nro_moto);
+	  
+		setTotal(parseFloat(total) - parseFloat(moto.monto));
+		setCountProducts(countProducts - moto.quantity);
+		setAllProducts(results);
+	  };
+	  
+	
+	{/*const onDeleteProduct = moto => {
 		const results = allProducts.filter(
 			item => item.id !== moto.nro_moto
 		);
 
-		setTotal(total - moto.monto * moto.quantity);
+		setTotal(parseFloat(total) - parseFloat(moto.monto));
 		setCountProducts(countProducts - moto.quantity);
 		setAllProducts(results);
-	};
+	};*/}
 
 	const onCleanCart = () => {
 		setAllProducts([]);
