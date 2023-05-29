@@ -1,19 +1,49 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
-import Layout from '../../componentes/Layout';
-import React from 'react'
+import { useState } from 'react';
+import { Header } from '../../componentes/Header';
+import { Motos } from '../../componentes/Motos';
+import { Confirmar } from '../../componentes/Confirmar';
+
+function Compras() {
+	const [allProducts, setAllProducts] = useState([]);
+	const [total, setTotal] = useState(0);
+	const [countProducts, setCountProducts] = useState(0);
+	const [isDivVisible, setDivVisible] = useState(true);
 
 
-const Compras: NextPage = () => {
-    return (
-        <Layout >
-            <h1>Motos</h1>
-            
-            <h2>
-                <Link href="/">Back to home</Link>
-            </h2>
-        </Layout>)
-        
+	return (
+		<>
+			<Header
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+				isDivVisible={isDivVisible}
+				setDivVisible={setDivVisible}
+			/>
+			<Motos
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+				isDivVisible={isDivVisible}
+				setDivVisible={setDivVisible}
+			/>
+            <Confirmar
+				allProducts={allProducts}
+				setAllProducts={setAllProducts}
+				total={total}
+				setTotal={setTotal}
+				countProducts={countProducts}
+				setCountProducts={setCountProducts}
+				isDivVisible={isDivVisible}
+				setDivVisible={setDivVisible}
+			/>
+		</>
+	);
 }
 
 export default Compras;

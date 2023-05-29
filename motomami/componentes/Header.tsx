@@ -7,8 +7,14 @@ export const Header = ({
 	countProducts,
 	setCountProducts,
 	setTotal,
+	isDivVisible,
+	setDivVisible,
 }) => {
 	const [active, setActive] = useState(false);
+
+	const toggleDivVisibility = () => {
+		setDivVisible(!isDivVisible);
+	  };
 
 	const onDeleteProduct = (moto) => {
 		const existingProduct = allProducts.find((item) => item.nro_moto === moto.nro_moto);
@@ -44,6 +50,7 @@ export const Header = ({
 	return (
 		<header>
 			<h1>Tienda</h1>
+			{isDivVisible && (
 
 			<div className='container-icon'>
 				<div
@@ -117,12 +124,16 @@ export const Header = ({
 							<button className='btn-clear-all' onClick={onCleanCart}>
 								Vaciar Carrito
 							</button>
+							<button className='btn-clear-all' onClick={toggleDivVisibility}>
+								Confirmar pedido
+							</button>
 						</>
 					) : (
 						<p className='cart-empty'>El carrito está vacío</p>
 					)}
 				</div>
 			</div>
+			)}
 		</header>
 	);
 };
