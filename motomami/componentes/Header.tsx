@@ -15,32 +15,25 @@ export const Header = ({
 	const toggleDivVisibility = () => {
 		setDivVisible(!isDivVisible);
 	  };
-
-	const onDeleteProduct = (moto) => {
-		const existingProduct = allProducts.find((item) => item.nro_moto === moto.nro_moto);
-	  
-		if (!existingProduct) {
-		  return;
-		}
-	  
-		const results = allProducts.filter((item) => item.nro_moto !== moto.nro_moto);
-	  
-		setTotal(parseFloat(total) - parseFloat(moto.monto));
-		setCountProducts(countProducts - moto.quantity);
-		setAllProducts(results);
-	  };
-	  
+  
+    const onDeleteProduct = (moto) => {
+      const existingProductIndex = allProducts.findIndex(
+        (item) => item.nro_moto === moto.nro_moto
+      );
+      if (existingProductIndex === -1) {
+        return;
+      }
+    
+      const updatedProducts = [...allProducts];
+      updatedProducts.splice(existingProductIndex, 1)
+      
+      setAllProducts(updatedProducts);
+    
+      setTotal((prevTotal) => parseFloat(prevTotal) - parseFloat(moto.monto)*moto.quantity);
+      setCountProducts((prevCount) => prevCount - moto.quantity);
+    };
+    
 	
-	{/*const onDeleteProduct = moto => {
-		const results = allProducts.filter(
-			item => item.id !== moto.nro_moto
-		);
-
-		setTotal(parseFloat(total) - parseFloat(moto.monto));
-		setCountProducts(countProducts - moto.quantity);
-		setAllProducts(results);
-	};*/}
-
 	const onCleanCart = () => {
 		setAllProducts([]);
 		setTotal(0);
