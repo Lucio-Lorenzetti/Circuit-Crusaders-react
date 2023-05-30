@@ -13,11 +13,10 @@ export const Confirmar = ({
 
     const enviarPedido = async () => {
       const pedido = {
-        nro_pedido: 155,
+        nro_pedido: 156,
         id_cliente: 1,
         motos: allProducts.map(moto => ({
-          id_moto: moto.nro_moto,
-          monto: moto.monto
+          nro_moto: moto.nro_moto
         })) 
       };
 
