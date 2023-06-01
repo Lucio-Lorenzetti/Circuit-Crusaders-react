@@ -9,14 +9,16 @@ export const FiltroEstilos = ({
   setTotal,
   isDivVisible,
   setDivVisible,
-  estadoActual,
-  setEstadoActual
+  id_estilo,
+  setEstiloActual,
+  motos,
+  setMotos
 }) => {
-  const handleChangeEstilo = (event) => {
-    setEstadoActual(event.target.value);
-    localStorage.setItem('estadoActual', event.target.value); // Guardar el valor en el almacenamiento local
-  };
 
+  const handleChangeEstilo = (event) => {
+    setEstiloActual(event.target.value);
+  };
+  
   const [estilos, setEstilos] = useState([]);
 
   useEffect(() => {
@@ -25,20 +27,13 @@ export const FiltroEstilos = ({
       .then((estilos) => setEstilos(estilos));
   }, []);
 
-  useEffect(() => {
-    const savedEstadoActual = localStorage.getItem('estadoActual'); // Recuperar el valor del almacenamiento local
-    if (savedEstadoActual) {
-      setEstadoActual(savedEstadoActual);
-    }
-  }, []);
-
   return (
     <div className="left-div">
       <h2>Filtrar por estilos</h2>
       {estilos.map((estilo) => (
         <div key={estilo.nro_estilo}>
           <div>
-            <button className="enlace" value={estilo.nombre} onClick={handleChangeEstilo}>
+            <button className="enlace" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
               {estilo.nombre}
             </button>
           </div>
@@ -47,3 +42,5 @@ export const FiltroEstilos = ({
     </div>
   );
 };
+
+
