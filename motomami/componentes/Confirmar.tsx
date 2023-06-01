@@ -1,3 +1,4 @@
+import { useState } from "react";
 
 export const Confirmar = ({
 	allProducts,
@@ -10,16 +11,19 @@ export const Confirmar = ({
 	setDivVisible,
   
 }) => {
+    const [email, setEmail] = useState('');
+
+    const handleInputChange = (event) => {
+      setEmail(event.target.value);
+    };
 
     const enviarPedido = async () => {
       const pedido = {
-        nro_pedido: 206,
-        id_cliente: 1,
+        email: email,
         motos: allProducts.map(moto => ({
-          nro_moto: moto.nro_moto
+           nro_moto:moto.nro_moto
         })) 
-      };
-
+    };
       try {
         const response = await fetch('http://localhost/Circuit-Crusaders-laravel/public/rest/pedido', {
           method: 'POST',
@@ -51,7 +55,7 @@ export const Confirmar = ({
 
         <div className='container-items'>
           <h3>Ingrese su email</h3>
-          <input type="text" id="email" />
+          <input type="text" name="email" id="email" value={email} onChange={handleInputChange} />
           <button onClick={enviarPedido}>Enviar Pedido</button>
 
         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const Motos = ({
   allProducts,
@@ -9,16 +9,31 @@ export const Motos = ({
   setTotal,
   isDivVisible,
   setDivVisible,
+  estiloActual,
+  setEstiloActual
 }) => {
   const [motos, setMotos] = useState([]);
   const placeholderImage = 'https://www.yodot.com/blog/wp-content/uploads/2019/08/error-loading-media-1024x581.png';
 
-  useEffect(() => {
-    fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
-      .then((response) => response.json())
-      .then((motos) => setMotos(motos));
-  }, []);
+  const estiloActualRef = useRef(estiloActual); // Crear una referencia para estiloActual
 
+  useEffect(() => {
+    estiloActualRef.current = estiloActual; // Actualizar el valor de estiloActualRef cuando estiloActual cambie
+  }, [estiloActual]);
+
+  useEffect(() => {
+    if (estiloActualRef.current === "") {
+
+      fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
+        .then((response) => response.json())
+        .then((motos) => setMotos(motos));
+    } else {
+      
+      fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos/estilos/${estiloActualRef.current}')
+        .then((response) => response.json())
+        .then((motos) => setMotos(motos));
+    }
+  }, []);
   const addToCart = (moto) => {
     if (allProducts.find((item) => item.nro_moto === moto.nro_moto)) {
       const products = allProducts.map((item) =>
