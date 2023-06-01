@@ -87,7 +87,7 @@ export const Header = ({
 												{moto.marca}
 											</p>
 											<span className='precio-producto-carrito'>
-												${moto.monto}
+												${moto.monto*moto.quantity}
 											</span>
 										</div>
 										<svg
@@ -115,10 +115,10 @@ export const Header = ({
 							</div>
 
 							<button className='btn-clear-all' onClick={onCleanCart}>
-								Vaciar Carrito
+								Vaciar
 							</button>
 							<button className='btn-clear-all' onClick={toggleDivVisibility}>
-								Confirmar pedido
+								Confirmar
 							</button>
 						</>
 					) : (

@@ -11,6 +11,7 @@ export const Motos = ({
   setDivVisible,
 }) => {
   const [motos, setMotos] = useState([]);
+  const placeholderImage = 'https://www.yodot.com/blog/wp-content/uploads/2019/08/error-loading-media-1024x581.png';
 
   useEffect(() => {
     fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
@@ -42,7 +43,8 @@ export const Motos = ({
           {motos.map((moto) => (
             <div className='item' key={moto.nro_moto}>
               <div className='info-product'>
-                <h2>{moto.marca} {moto.modelo} {moto.id_estilo} {moto.anio}</h2>
+                <h2>{moto.modelo} {moto.id_estilo}</h2>
+                <img src={moto.foto_url || placeholderImage} className='product-image' />
                 <p className='price'>${moto.monto}</p>
                 <button onClick={() => addToCart(moto)}>Añadir al carrito</button>
               </div>

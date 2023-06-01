@@ -34,11 +34,21 @@ img {
 }
 
 body {
-	background:#ffb727;
+	background-image: url('https://www.motociclismo.es/uploads/s1/11/61/84/19/manillar-cafe-racer.jpeg');
+	background-size: cover;
+  	background-position: center;
+  	background-repeat: no-repeat;
+	background-origin: content-box; /* Establecer el origen del fondo en el contenido del elemento */
 	margin: 0 auto;
+	width: 100%;
+	height: 100%;
 	max-width: 1200px;
 	font-family: 'Lato';
-	color: #333;
+	/*background:#5a5a5a;
+	background-size: cover;
+	
+	
+	color: #333;*/
 }
 
 .icon-cart {
@@ -166,10 +176,12 @@ header {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
+	width: 100%; /* Establece el ancho fijo deseado */
 }
 
 .item {
 	border-radius: 10px;
+	width: 100%; /* Ocupa todo el espacio disponible en el contenedor */
 }
 
 .item:hover {
@@ -224,23 +236,34 @@ header {
 }
 
 .btn-clear-all {
+	opacity: 1;
+	background-color: #ffb727;
+	color: #000000;
+	font-size: 1.2rem;
+	padding: 10px 20px;
 	border: none;
-	background-color: #000;
-	color: #fff;
+	transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar efecto de transición al botón */
+	text-decoration: none;
+
 	padding: 15px 0;
 	display: block;
 	width: 100%;
 	margin-top: 10px;
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
-	font-family: inherit;
 	cursor: pointer;
-  font-size: 16px;
-  transition: all .3s ease;
+  	font-size: 16px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bolder;
 }
 
 .btn-clear-all:hover{
-  background-color: #333;
-  transform: scale(1.03);
-  border-radius: 0;
+  background-color: rgb(0, 0, 0);
+  color: #ffb727;
 }
+
+.product-image {
+	width: 80%;
+	height: 100px; /* Ajusta la altura según tus preferencias */
+	object-fit: cover;
+	border-radius: 10px;
+  }
+  

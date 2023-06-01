@@ -13,7 +13,7 @@ export const Confirmar = ({
 
     const enviarPedido = async () => {
       const pedido = {
-        nro_pedido: 156,
+        nro_pedido: 206,
         id_cliente: 1,
         motos: allProducts.map(moto => ({
           nro_moto: moto.nro_moto
