@@ -9,46 +9,22 @@ export const Motos = ({
   setTotal,
   isDivVisible,
   setDivVisible,
-  estiloActual,
-  setEstiloActual
+  setEstiloActual,
+  id_estilo,
+  motos,
+  setMotos,
 }) => {
-  const [motos, setMotos] = useState([]);
-  const placeholderImage = 'https://www.yodot.com/blog/wp-content/uploads/2019/08/error-loading-media-1024x581.png';
+  const placeholderImage =
+    'https://www.yodot.com/blog/wp-content/uploads/2019/08/error-loading-media-1024x581.png'; //Imagen por defecto por si se llega a dejar de funcionar algún link de imagen de alguna moto
 
-  const estiloActualRef = useRef(estiloActual); // Crear una referencia para estiloActual
 
-  useEffect(() => {
-    estiloActualRef.current = estiloActual; // Actualizar el valor de estiloActualRef cuando estiloActual cambie
-  }, [estiloActual]);
-
-  useEffect(() => {
-    if (estiloActualRef.current === "") {
-
-      fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
-        .then((response) => response.json())
-        .then((motos) => setMotos(motos));
-    } else {
-      
-      fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos/estilos/${estiloActualRef.current}')
-        .then((response) => response.json())
-        .then((motos) => setMotos(motos));
-    }
-  }, []);
   const addToCart = (moto) => {
-    if (allProducts.find((item) => item.nro_moto === moto.nro_moto)) {
-      const products = allProducts.map((item) =>
-        item.nro_moto === moto.nro_moto
-          ? { ...item, quantity: item.quantity + 1 }
-          : item
-      );
-      setTotal((prevTotal) => parseFloat(prevTotal) + parseFloat(moto.monto));
-      setCountProducts((prevCount) => prevCount + 1);
-      return setAllProducts([...products]);
-    }
-
     setTotal((prevTotal) => parseFloat(prevTotal) + parseFloat(moto.monto));
     setCountProducts((prevCount) => prevCount + 1);
-    setAllProducts([...allProducts, { ...moto, quantity: 1 }]);
+    setAllProducts([
+      ...allProducts,
+      { ...moto, quantity: 1, cartItemId: Date.now() } // Agregar un identificador único para cada compra de moto
+    ]);
   };
 
   return (
@@ -58,7 +34,7 @@ export const Motos = ({
           {motos.map((moto) => (
             <div className='item' key={moto.nro_moto}>
               <div className='info-product'>
-                <h2>{moto.modelo} {moto.id_estilo}</h2>
+                <h2>{moto.modelo}</h2>
                 <img src={moto.foto_url || placeholderImage} className='product-image' />
                 <p className='price'>${moto.monto}</p>
                 <button onClick={() => addToCart(moto)}>Añadir al carrito</button>

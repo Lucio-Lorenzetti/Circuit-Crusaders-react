@@ -73,7 +73,7 @@ header {
 	right: 0;
 
 	background-color: #000;
-	color: #fff;
+	color: rgb(0, 0, 0);
 	width: 25px;
 	height: 25px;
 
@@ -85,13 +85,14 @@ header {
 
 #contador-productos {
 	font-size: 12px;
+	color:#fff
 }
 
 .container-cart-products {
 	position: absolute;
 	top: 50px;
 	right: 0;
-
+	color:rgb(0, 0, 0);
 	background-color: #fff;
 	width: 400px;
 	z-index: 1;
@@ -100,6 +101,7 @@ header {
 }
 
 .cart-product {
+	color:rgb(0, 0, 0);
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -109,22 +111,26 @@ header {
 }
 
 .info-cart-product {
+	color:rgb(0, 0, 0);
 	display: flex;
 	justify-content: space-between;
 	flex: 0.8;
 }
 
 .titulo-producto-carrito {
+	color:rgb(0, 0, 0);
 	font-size: 20px;
 }
 
 .precio-producto-carrito {
+	color:rgb(0, 0, 0);
 	font-weight: 700;
 	font-size: 20px;
 	margin-left: 10px;
 }
 
 .cantidad-producto-carrito {
+	color:rgb(0, 0, 0);
 	font-weight: 400;
 	font-size: 20px;
 }

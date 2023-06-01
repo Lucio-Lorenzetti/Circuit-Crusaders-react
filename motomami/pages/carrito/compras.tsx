@@ -3,7 +3,6 @@ import { Header } from '../../componentes/Header';
 import { Motos } from '../../componentes/Motos';
 import { Confirmar } from '../../componentes/Confirmar';
 import { FiltroEstilos } from '../../componentes/FiltroEstilos';
-import axios from 'axios';
 
 
 function Compras() {
@@ -29,7 +28,6 @@ function Compras() {
 				
 			} catch (error) {
 			  console.error(error);
-			  // Manejo de errores
 			}
 		  };
 	  
