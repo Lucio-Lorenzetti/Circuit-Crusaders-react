@@ -11,6 +11,8 @@ function Compras() {
   const [countProducts, setCountProducts] = useState(0);
   const [isDivVisible, setDivVisible] = useState(true);
   const [id_estilo, setEstiloActual] = useState("");
+  const [currentPage, setCurrentPage] = useState(1); // Página actual
+
 
   useEffect(() => {
     if (id_estilo === "") {
@@ -23,6 +25,7 @@ function Compras() {
           fetch(`https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos/estilos/${id_estilo}`)
             .then((response) => response.json())
             .then((motos) => setMotos(motos));
+            setCurrentPage(1);
         } catch (error) {
           console.error(error);
         }
@@ -72,6 +75,8 @@ function Compras() {
             setEstiloActual={setEstiloActual}
             motos={motos}
             setMotos={setMotos}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
           />
           <Confirmar
             allProducts={allProducts}

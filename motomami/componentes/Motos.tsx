@@ -13,8 +13,9 @@ export const Motos = ({
   id_estilo,
   motos,
   setMotos,
+  currentPage,
+  setCurrentPage
 }) => {
-  const [currentPage, setCurrentPage] = useState(1); // Página actual
   const itemsPerPage = 10; // Cantidad de elementos por página
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
