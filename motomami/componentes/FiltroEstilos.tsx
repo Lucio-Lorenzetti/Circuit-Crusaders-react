@@ -28,17 +28,30 @@ export const FiltroEstilos = ({
   }, []);
 
   return (
-    <div className="left-div">
-      <div>Filtrar por estilos</div>
-      {estilos.map((estilo) => (
-        <div key={estilo.nro_estilo}>
-          <div className="list-group">
-              <button className="list-group-item" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
-              {estilo.nombre}
-            </button>
+    <div>
+        {isDivVisible && (
+    <div className="sidebar">
+      <div className="centered-div" >
+        
+      <h3>Estilos</h3>
+
+        {estilos.map((estilo) => (
+          <div  key={estilo.nro_estilo}>
+            <ul className="category-list">       
+              <li><button className="filter-button" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
+                  {estilo.nombre}</button>
+              </li>       
+            </ul>
           </div>
-        </div>
-      ))}
+        ))}
+        <h3>Sin estilos</h3>
+
+        <button className="filter-button" value={""} onClick={handleChangeEstilo}>
+            NO FILTRAR</button>
+        
+      </div>
+    </div>
+    )}
     </div>
   );
 };

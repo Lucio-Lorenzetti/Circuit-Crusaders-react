@@ -37,7 +37,7 @@ export const Header = ({
 
   return (
     <header>
-      <h1>Tienda</h1>
+      <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Logo de la concesionaria" ></img>
       {isDivVisible && (
         <div className='container-icon'>
           <div
@@ -72,9 +72,7 @@ export const Header = ({
                   {allProducts.map((moto) => (
                     <div className='cart-product' key={moto.cartItemId}>
                       <div className='info-cart-product'>
-                        <span className='cantidad-producto-carrito'>
-                          {moto.quantity}
-                        </span>
+                        
                         <p className='titulo-producto-carrito'>{moto.marca}</p>
                         <span className='precio-producto-carrito'>
                           ${moto.monto * moto.quantity}

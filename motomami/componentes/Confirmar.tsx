@@ -12,7 +12,9 @@ export const Confirmar = ({
   
 }) => {
     const [email, setEmail] = useState('');
-
+    const toggleDivVisibility = () => {
+      setDivVisible(!isDivVisible);
+    };
     const handleInputChange = (event) => {
       setEmail(event.target.value);
     };
@@ -25,7 +27,7 @@ export const Confirmar = ({
         })) 
     };
       try {
-        const response = await fetch('http://localhost/Circuit-Crusaders-laravel/public/rest/pedido', {
+        const response = await fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/pedido', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -34,15 +36,16 @@ export const Confirmar = ({
         });
 
         if (response.ok) {
-          // El pedido se ha enviado correctamente
-          // Realiza las acciones necesarias
+          alert('El pedido se hizo correctamente.');
+          toggleDivVisibility();
+
         } else {
-          // Ocurrió un error al enviar el pedido
-          // Realiza las acciones necesarias
+          alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
+
         }
       } catch (error) {
-        // Ocurrió un error en la solicitud
-        // Realiza las acciones necesarias
+        alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
+
       }
     };
 
@@ -53,12 +56,16 @@ export const Confirmar = ({
       <div>
         {!isDivVisible && (
 
-        <div className='container-items'>
-          <h3>Ingrese su email</h3>
-          <input type="text" name="email" id="email" value={email} onChange={handleInputChange} />
-          <button onClick={enviarPedido}>Enviar Pedido</button>
+        <><div className="confirmar">
+            <p><h3 className="confirmar-text">Ingrese su email</h3></p>
 
-        </div>
+            <input className="confirmar-input"type="text" name="email" id="email" value={email} onChange={handleInputChange} />
+            <button className="confirmar-button" onClick={enviarPedido}>Enviar Pedido</button>
+
+
+          </div><div className="pagination-container">
+              <button className="pagination-button" onClick={toggleDivVisibility}>Volver</button>
+            </div></>
         )}
       </div>
     );
