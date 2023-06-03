@@ -29,11 +29,11 @@ export const FiltroEstilos = ({
 
   return (
     <div className="left-div">
-      <h2>Filtrar por estilos</h2>
+      <div>Filtrar por estilos</div>
       {estilos.map((estilo) => (
         <div key={estilo.nro_estilo}>
-          <div>
-            <button className="enlace" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
+          <div className="list-group">
+              <button className="list-group-item" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
               {estilo.nombre}
             </button>
           </div>

@@ -34,8 +34,21 @@ function Compras() {
 
   return (
     <>
-      <div style={{ display: "flex" }}>
-        <div style={{ width: "85%" }}>
+          <FiltroEstilos
+            allProducts={allProducts}
+            setAllProducts={setAllProducts}
+            total={total}
+            setTotal={setTotal}
+            countProducts={countProducts}
+            setCountProducts={setCountProducts}
+            isDivVisible={isDivVisible}
+            setDivVisible={setDivVisible}
+            id_estilo={id_estilo}
+            setEstiloActual={setEstiloActual}
+            motos={motos}
+            setMotos={setMotos}
+          />
+
           <Header
             allProducts={allProducts}
             setAllProducts={setAllProducts}
@@ -70,25 +83,6 @@ function Compras() {
             isDivVisible={isDivVisible}
             setDivVisible={setDivVisible}
           />
-        </div>
-		
-		</div>
-        <div style={{ width: "40%" }}>
-          <FiltroEstilos
-            allProducts={allProducts}
-            setAllProducts={setAllProducts}
-            total={total}
-            setTotal={setTotal}
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
-            isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible}
-            id_estilo={id_estilo}
-            setEstiloActual={setEstiloActual}
-            motos={motos}
-            setMotos={setMotos}
-          />
-        </div>
     </>
   );
 }
