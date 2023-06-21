@@ -321,7 +321,10 @@ header {
 	color: #ffffff;
 	text-decoration: none;
   }
-  
+  .filter-button.active {
+	background-color: white;
+	color: #000000;
+  }
   .filter-button:hover {
 	background-color: #1f1f1f;
   }

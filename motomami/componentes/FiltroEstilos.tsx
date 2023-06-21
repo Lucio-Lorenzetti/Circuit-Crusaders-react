@@ -14,11 +14,11 @@ export const FiltroEstilos = ({
   motos,
   setMotos
 }) => {
-
   const handleChangeEstilo = (event) => {
-    setEstiloActual(event.target.value);
+    const estiloSeleccionado = event.target.value;
+    setEstiloActual(estiloSeleccionado);
   };
-  
+
   const [estilos, setEstilos] = useState([]);
 
   useEffect(() => {
@@ -29,31 +29,32 @@ export const FiltroEstilos = ({
 
   return (
     <div>
-        {isDivVisible && (
-    <div className="sidebar">
-      <div className="centered-div" >
-        
-      <h3>Estilos</h3>
-
-        {estilos.map((estilo) => (
-          <div  key={estilo.nro_estilo}>
-            <ul className="category-list">       
-              <li><button className="filter-button" value={estilo.nro_estilo} onClick={handleChangeEstilo}>
-                  {estilo.nombre}</button>
-              </li>       
-            </ul>
+      {isDivVisible && (
+        <div className="sidebar">
+          <div className="centered-div">
+            <h3>Estilos</h3>
+            {estilos.map((estilo) => (
+              <div key={estilo.nro_estilo}>  
+                <button
+                  className={`filter-button ${
+                    estilo.nro_estilo === parseInt(id_estilo) ? 'active' : ''}`}
+                  value={estilo.nro_estilo}
+                  onClick={handleChangeEstilo}
+                >
+                  {estilo.nombre}
+                </button> 
+              </div>
+            ))}
+            <button
+              className={`filter-button ${id_estilo === '' ? 'active' : ''}`}
+              value=""
+              onClick={handleChangeEstilo}
+            >
+              LIMPIAR FILTROS
+            </button>
           </div>
-        ))}
-        <h3>Sin estilos</h3>
-
-        <button className="filter-button" value={""} onClick={handleChangeEstilo}>
-            NO FILTRAR</button>
-        
-      </div>
-    </div>
-    )}
+        </div>
+      )}
     </div>
   );
 };
-
-

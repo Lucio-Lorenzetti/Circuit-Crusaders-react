@@ -65,11 +65,13 @@ export const Motos = ({
               </div>
             ))
           )}
-        </div><div className="pagination-container">
-            <button className="pagination-button" onClick={handlePreviousPage}>Anterior</button>
-            <span className="pagination-text" >Página {currentPage}</span>
-            <button className="pagination-button" onClick={handleNextPage}>Siguiente</button>
-          </div></> 
+        </div>{motos.length !== 0 && (
+        <div className="pagination-container">
+          <button className="pagination-button" onClick={handlePreviousPage}>Anterior</button>
+          <span className="pagination-text">Página {currentPage}</span>
+          <button className="pagination-button" onClick={handleNextPage}>Siguiente</button>
+        </div>
+      )}</> 
       )}
 
      
