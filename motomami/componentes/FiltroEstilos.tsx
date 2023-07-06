@@ -30,8 +30,7 @@ export const FiltroEstilos = ({
   return (
     <div>
       {isDivVisible && (
-        <div className="sidebar">
-          <div className="centered-div">
+        <div >
             <h3>Estilos</h3>
             {estilos.map((estilo) => (
               <div key={estilo.nro_estilo}>  
@@ -52,9 +51,8 @@ export const FiltroEstilos = ({
             >
               LIMPIAR FILTROS
             </button>
-          </div>
-        </div>
-      )}
+          </div>      
+          )}
     </div>
   );
 };
