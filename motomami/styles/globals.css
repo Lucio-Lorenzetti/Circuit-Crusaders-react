@@ -1,7 +1,7 @@
 html,
 body {
  
-    font-family: 'font-sans', sans-serif;
+    font-family: 'Lato';
 	line-height: 1.6;
 	font-size: 18px;
 }
@@ -19,11 +19,7 @@ a:hover {
   text-decoration: underline;
 }
 
-img {
-  max-width: 80%;
-  display:block;
-  
-}
+
 *::after,
 *::before,
 * {
@@ -38,6 +34,7 @@ img {
 	width: 40px;
 	height: 40px;
 	stroke: #000;
+	margin-top: 15px;
 }
 
 .icon-cart:hover {
@@ -46,13 +43,13 @@ img {
 
 img {
 	max-width: 100%;
-	
+	display: block;
+
 }
 
 /* Header */
 header {	
-	margin-left: 17%; /* Asegura que el contenido se ajuste correctamente */
-  	width: 80%; /* El restante del espacio disponible */
+	
 	display: flex;
 	justify-content: space-between;
 	padding: 30px 0 40px 0;
@@ -76,6 +73,8 @@ header {
 	justify-content: center;
 	align-items: center;
 	border-radius: 50%;
+	margin-top: 15px;
+
 }
 
 #contador-productos {
@@ -164,18 +163,12 @@ header {
 }
 
 /* Main */
-.container-items {
-	display: grid;
-	right: 0;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	margin-left: 17%; /* Asegura que el contenido se ajuste correctamente */
-  width: 80%; /* El restante del espacio disponible */
-}
 
 .item {
 	border-radius: 10px;
 	width: 100%; /* Ocupa todo el espacio disponible en el contenedor */
+	font-family: 'Lato';
+	color: #fff;
 }
 
 .item:hover {
@@ -247,8 +240,8 @@ header {
 	margin-top: 10px;
 	cursor: pointer;
   	font-size: 16px;
-	font-family: Arial, Helvetica, sans-serif;
-	font-weight: bolder;
+	  font-family: 'Lato';
+	  font-weight: bolder;
 }
 
 .btn-clear-all:hover{
@@ -264,13 +257,10 @@ header {
   }
   .left-div {
 	position: fixed;
-	font-family: 'font-sans', sans-serif;
+    font-family: 'Lato';
 	top: 0;
 	left: 0;
 	bottom: 0;
-	
-	width: 15%;
-
   }
  
   body {
@@ -282,24 +272,23 @@ header {
 }
 
 .sidebar {
-	position: fixed;
-	font-family: 'font-sans', sans-serif;
+	
+    font-family: 'Lato';
 	top: 0;
 	left: 0;
 	bottom: 0;
-	background-color: #000000;
 	padding: 20px;
 	
   }
   
   h2 {
 	margin-bottom: 10px;
-	font-family: 'font-sans', sans-serif;
+    font-family: 'Lato';
 	
   }
   h3 {
 	margin-bottom: 10px;
-	font-family: 'font-sans', sans-serif;
+    font-family: 'Lato';
 	left:0
   }
   
@@ -339,6 +328,10 @@ header {
 	justify-content: flex-end;
 	align-items: center;
 	margin-top: 20px;
+	justify-content: center;
+	font-family: 'Lato';
+
+
   }
   
   .pagination-button {
@@ -356,6 +349,8 @@ header {
   .pagination-text{
 	margin-right: 20px; 
 	margin-bottom: 40px; 
+	color: #fff;
+
   }
   .pagination-button:first-child {
 	margin-left: 0;
@@ -388,3 +383,5 @@ header {
 	padding: 10px;
 	margin-top: 10px;
   }
+ 
+  

@@ -40,7 +40,7 @@ function Compras() {
   return (
     <div className="container">
         <div className="row">
-            <div className="col-md-10 col-sm-12">
+            <div className="col-md-12">
 
               <Header
                 allProducts={allProducts}
@@ -53,7 +53,7 @@ function Compras() {
                 setDivVisible={setDivVisible}
               />
               </div>
-          <div className="col-md-2 col-sm-12">
+          <div className="col-md-12 col-lg-2 col-sm-12">
             <FiltroEstilos
               allProducts={allProducts}
               setAllProducts={setAllProducts}
@@ -69,7 +69,7 @@ function Compras() {
               setMotos={setMotos}
             />
           </div>
-          <div className="col-md-10 col-sm-12">
+          <div className="col-md-12 col-lg-10 col-sm-12">
 
           <Motos
             allProducts={allProducts}

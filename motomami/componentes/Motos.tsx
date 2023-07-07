@@ -56,7 +56,7 @@ export const Motos = ({
             <p>No hay motos disponibles.</p>
           ) : (
             currentItems.map((moto) => (
-              <div className='col-md-4 col-sm-12' key={moto.nro_moto}>
+              <div className='col-md-6 col-lg-4 col-sm-12' key={moto.nro_moto}>
                   <div className='item'>
                     <div className='info-product'>
                       <h2>{moto.modelo}</h2>
