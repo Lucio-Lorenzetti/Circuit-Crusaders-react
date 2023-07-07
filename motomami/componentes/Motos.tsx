@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export const Motos = ({
   allProducts,
@@ -16,7 +17,7 @@ export const Motos = ({
   currentPage,
   setCurrentPage
 }) => {
-  const itemsPerPage = 10; // Cantidad de elementos por página
+  const itemsPerPage = 9; // Cantidad de elementos por página
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = motos.slice(indexOfFirstItem, indexOfLastItem);
@@ -50,19 +51,21 @@ export const Motos = ({
   return (
     <div>
       {isDivVisible && (
-        <><div className='container-items'>
+        <><div className="row">
           {motos.length === 0 ? (
             <p>No hay motos disponibles.</p>
           ) : (
             currentItems.map((moto) => (
-              <div className='item' key={moto.nro_moto}>
-                <div className='info-product'>
-                  <h2>{moto.modelo}</h2>
-                  <img src={moto.foto_url || placeholderImage} className='product-image' />
-                  <p className='price'>${moto.monto}</p>
-                  <button onClick={() => addToCart(moto)}>Añadir al carrito</button>
+              <div className='col-md-6 col-lg-4 col-sm-12' key={moto.nro_moto}>
+                  <div className='item'>
+                    <div className='info-product'>
+                      <h2>{moto.modelo}</h2>
+                      <img src={moto.foto_url || placeholderImage} className='product-image' />
+                      <p className='price'>${moto.monto}</p>
+                      <button onClick={() => addToCart(moto)}>Añadir al carrito</button>
+                    </div>
+                  </div>
                 </div>
-              </div>
             ))
           )}
         </div>{motos.length !== 0 && (
