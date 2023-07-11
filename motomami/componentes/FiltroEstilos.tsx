@@ -30,13 +30,11 @@ export const FiltroEstilos = ({
   return (
     <div>
       {isDivVisible && (
-        <div className="sidebar">
-          <div className="centered-div">
-            <h3>Estilos</h3>
+        <div>
             {estilos.map((estilo) => (
               <div key={estilo.nro_estilo}>  
                 <button
-                  className={`filter-button ${
+                  className={`d-flex justify-content-center filter-button ${
                     estilo.nro_estilo === parseInt(id_estilo) ? 'active' : ''}`}
                   value={estilo.nro_estilo}
                   onClick={handleChangeEstilo}
@@ -46,15 +44,14 @@ export const FiltroEstilos = ({
               </div>
             ))}
             <button
-              className={`filter-button ${id_estilo === '' ? 'active' : ''}`}
+              className={`d-flex justify-content-center filter-button ${id_estilo === '' ? 'active' : ''}`}
               value=""
               onClick={handleChangeEstilo}
             >
               LIMPIAR FILTROS
             </button>
-          </div>
-        </div>
-      )}
+          </div>      
+          )}
     </div>
   );
 };
