@@ -47,9 +47,6 @@
 	transition: transform 0.3s ease;
 }
 
-/*.logo:hover {
-	transform: scale(1.1);
-}*/
 
 .buttons-container {
 	margin-top: 20px;
@@ -75,4 +72,40 @@
 .button:hover {
 	background-color: #fcbf00;
 	transform: scale(1.1); /* Agregar efecto de escala al hacer hover */
+}
+
+/*Login y Register*/
+.formulario{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: #313131d2;
+	color: #ffffff;
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial;
+
+}
+
+.login {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.register {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
 }

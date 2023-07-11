@@ -46,8 +46,11 @@ const Home: NextPage = () => {
             <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Logo de la concesionaria" className={styles['logo']} />
           </div>
           <div className={styles['buttons-container']}>
-            <Link href="/carrito/compras" passHref>
-              <button className={styles['button']}>TIENDA</button>
+            <Link href="/autenticacion/register" passHref>
+              <button className={styles['button']}>REGISTRARSE</button>
+            </Link>
+            <Link href="/autenticacion/login" passHref>
+              <button className={styles['button']}>INICIAR SESIÓN</button>
             </Link>
           </div>
         </div>
