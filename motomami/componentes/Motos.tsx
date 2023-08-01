@@ -60,7 +60,11 @@ export const Motos = ({
                   <div className='item'>
                     <div className='info-product'>
                       <h2>{moto.modelo}</h2>
-                      <img src={moto.foto_url || placeholderImage} className='product-image' />
+                      <img
+                        src={`data:image/jpeg;base64,${moto.foto}`|| placeholderImage}
+                        className='product-image'
+                        alt='Imagen de la moto'
+                      />
                       <p className='price'>${moto.monto}</p>
                       <button onClick={() => addToCart(moto)}>Añadir al carrito</button>
                     </div>
