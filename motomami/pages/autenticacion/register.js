@@ -1,28 +1,34 @@
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
-const Register = () => {  
+const Register = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');  
+  const [password, setPassword] = useState('');
   const [passwordConfirmation, setPasswordConfirmation] = useState('');
+  const [token, setToken] = useState('');
   const [error, setError] = useState(false);
-  const [user, setUser] = useState(false);
+
+  const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    
     if (name === "" || email === '' || password === '') {
       setError(true);
       return;
     }
-    if(password != passwordConfirmation){
-      setPassword("");
-      setPasswordConfirmation("");
+
+    if (password !== passwordConfirmation) {
+      setPassword('');
+      setPasswordConfirmation('');
       setError(true);
-      return
+      return;
     }
+
     setError(false);
+
     try {
       const response = await fetch('http://127.0.0.1:8000/rest/register', {
         method: 'POST',
@@ -38,12 +44,21 @@ const Register = () => {
       });
 
       if (response.ok) {
-        setUser(true);
-        // Realizar redirección
-        window.location.href = '../carrito/compras';
+        // Usuario registrado con éxito, obtener el token del cuerpo de la respuesta
+        const data = await response.json();
+
+        // Almacenar el token en el almacenamiento local
+        setToken(data.access_token); // Almacenar el token en el estado
+
+        // Realizar redirección a otra página
+        router.push({
+          pathname: '/carrito/compras',
+          query: { token: data.access_token },
+        });
       } else {
-        setEmail("");
-        setPassword("");
+        // Si la respuesta no es exitosa, limpiar los campos de email y contraseña y mostrar un error
+        setEmail('');
+        setPassword('');
         setError(true);
       }
     } catch (error) {
@@ -55,7 +70,7 @@ const Register = () => {
     <div className={styles['formulario']}>
       <h1>Registrarse</h1>
       <form className={styles['register']} onSubmit={handleSubmit}>
-      <div>
+        <div>
           <label>Nombre: </label>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </div>

@@ -63,9 +63,7 @@ export const Header = ({
             </div>
           </div>
 
-          <div
-            className={`container-cart-products ${active ? '' : 'hidden-cart'}`}
-          >
+          <div className={`container-cart-products ${active ? '' : 'hidden-cart'}`}>
             {allProducts.length ? (
               <>
                 <div className='row-product'>

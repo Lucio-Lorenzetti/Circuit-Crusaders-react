@@ -101,7 +101,11 @@
 	align-items: center;
 	gap: 1rem;
 }
-
+.login-container {
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
 .register {
 	display: flex;
 	justify-content: center;
@@ -109,3 +113,72 @@
 	align-items: center;
 	gap: 1rem;
 }
+
+/*Pedidos recuperados*/
+.table-container {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	/*background-color: #313131d2;*/
+	color: #ffffff;
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 10px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial;
+	width: 90%; /* Ocupar el 90% de la pantalla */
+  }
+  
+  .table-container table {
+	width: 100%;
+	border-collapse: collapse;
+	border: none;
+	border-radius: 10px;
+  }
+  
+  /*.table-container th,
+  .table-container td {
+	padding: 8px;
+	text-align: center;
+	border: 1px solid #ddd;
+  }*/
+  
+  .table-container th {
+	background-color: #313131d2;
+  }
+
+  .order-list {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.order-item {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.order-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.order-product-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.order-product-price {
+  font-size: 14px;
+}
+
+
+  
