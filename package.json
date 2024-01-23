@@ -1,9 +1,12 @@
 {
   "dependencies": {
     "@types/react": "^18.2.7",
+    "axios": "^1.6.5",
     "buffer": "^6.0.3",
+    "cors-anywhere": "^0.4.4",
     "graceful-fs": "^4.2.11",
     "node-fetch": "^2.6.1",
+    "openai": "^4.0.0",
     "react-responsive-carousel": "^3.2.23",
     "stream-browserify": "^3.0.0",
     "typescript": "^5.0.4",

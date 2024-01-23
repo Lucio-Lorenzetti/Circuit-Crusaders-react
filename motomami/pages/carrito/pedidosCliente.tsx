@@ -10,7 +10,7 @@ function Pedidos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/rest/historial', {
+        const response = await fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/historial', {
           headers: {
             Authorization: `Bearer ${token}` // Agregar el token a la cabecera de la solicitud
           }
