@@ -2,42 +2,55 @@ import React, { useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
+import config from './../../config';
+
+
+
 
 const PaginaRecomendaciones = () => {
   const [descripcion, setDescripcion] = useState('');
   const [recomendacion, setRecomendacion] = useState('');
 
-  const API_URL = 'https://api.openai.com/v1/completions';
-
   const handleChange = (e) => {
     setDescripcion(e.target.value);
   };
 
-  const obtenerRecomendacionMoto = async () => {
+  const enviarMensaje = async () => {
+    let respuesta;
+
+    respuesta = await obtenerRespuestaChatGPT(descripcion);
+    
+    setRecomendacion(respuesta);
+  };
+
+   async function obtenerRespuestaChatGPT(mensaje) {
+    
+
+    const url = 'https://api.openai.com/v1/chat/completions';
+    const apiKey = config.openaiApiKey;
+  console.log(apiKey);
     const headers = {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer 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`,
+      'Authorization': `Bearer ${apiKey}`,
     };
-
-    const requestData = {
+  
+    const data = {
       model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: descripcion }],
+      messages: [{ role: 'user', content: mensaje }],
       temperature: 0.7,
     };
-
+  
     try {
-      const response = await axios.post(API_URL, requestData, { headers });
-      const recomendacion = response.data.choices[0].text;
-      setRecomendacion(recomendacion);
+      const respuesta = await axios.post(url, data, { headers });
+      return respuesta.data.choices[0].message.content;
     } catch (error) {
-      console.error('Error en la respuesta de la API de ChatGPT:', error.message);
-      // Puedes mostrar un mensaje de error al usuario si lo deseas
+      return 'Error al obtener la respuesta de ChatGPT.';
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    obtenerRecomendacionMoto();
+    obtenerRespuestaChatGPT(descripcion);
   };
 
   const handleFiltrarMotos = () => {
@@ -52,7 +65,6 @@ const PaginaRecomendaciones = () => {
   return (
     <div className={styles["table-container"]}>
       <h1 className={styles["title"]}>Obtener una Recomendación</h1>
-      <form onSubmit={handleSubmit}>
         <div>
           <label className={styles["label"]}>Ingrese sus preferencias:</label>
           <textarea
@@ -63,9 +75,8 @@ const PaginaRecomendaciones = () => {
           />
         </div>
         <div>
-          <button type="submit" className="btn btn-primary">Obtener Recomendación</button>
+          <button type="submit" className="btn btn-primary" onClick={enviarMensaje}>Obtener Recomendación</button>
         </div>
-      </form>
       {recomendacion && (
         <div>
           <h3 className={styles["subtitle"]}>La recomendación según sus preferencias es...</h3>
