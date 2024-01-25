@@ -8,6 +8,7 @@
     "node-fetch": "^2.6.1",
     "openai": "^4.25.0",
     "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.21.3",
     "stream-browserify": "^3.0.0",
     "typescript": "^5.0.4",
     "url": "^0.11.0"

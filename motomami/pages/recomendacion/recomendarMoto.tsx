@@ -53,9 +53,8 @@ const PaginaRecomendaciones = () => {
     obtenerRespuestaChatGPT(descripcion);
   };
 
-  const handleFiltrarMotos = () => {
-    console.log('Filtrar nuestras motos');
-    // Lógica para filtrar motos
+  const handleVolverAMotos = () => {
+    window.history.back()
   };
 
   const handleLimpiarRecomendacion = () => {
@@ -75,11 +74,11 @@ const PaginaRecomendaciones = () => {
           />
         </div>
         <div>
-          <button type="submit" className="btn btn-primary" onClick={enviarMensaje}>Obtener Recomendación</button>
+          <button type="submit" className={styles['button']} onClick={enviarMensaje}>Obtener Recomendación</button>
         </div>
       {recomendacion && (
         <div>
-          <h3 className={styles["subtitle"]}>La recomendación según sus preferencias es...</h3>
+          <h3 className={styles["title"]}>La recomendación según sus preferencias es...</h3>
           <div>
             <textarea
               readOnly
@@ -90,8 +89,8 @@ const PaginaRecomendaciones = () => {
             />
           </div>
           <div>
-            <button onClick={handleFiltrarMotos} className="btn btn-success">Filtrar nuestras motos</button>
-            <button onClick={handleLimpiarRecomendacion} className="btn btn-danger">Limpiar Recomendación</button>
+            <button onClick={handleVolverAMotos} className={styles['button']}>Ir a nuestras motos</button>
+            <button onClick={handleLimpiarRecomendacion} className={styles['button']}>Limpiar Recomendación</button>
           </div>
         </div>
       )}
