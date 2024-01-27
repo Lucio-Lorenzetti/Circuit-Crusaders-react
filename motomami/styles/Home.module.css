@@ -148,8 +148,10 @@
 	border: 1px solid #ddd;
   }*/
   
-  .table-container th {
-	background-color: #313131d2;
+  .translucent-background {
+	background-color: rgba(0, 0, 0, 0.5); 
+	padding: 20px; 
+	border-radius: 10px;
   }
 
   .order-list {

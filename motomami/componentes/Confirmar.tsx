@@ -1,16 +1,13 @@
 import { useState } from "react";
 import styles from '../styles/Home.module.css';
+import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
 
 export const Confirmar = ({
   allProducts,
-  setAllProducts,
-  total,
-  countProducts,
-  setCountProducts,
-  setTotal,
   isDivVisible,
   setDivVisible,
   token,
+  total
 }) => {
   const toggleDivVisibility = () => {
     setDivVisible(!isDivVisible);
@@ -23,7 +20,7 @@ export const Confirmar = ({
       })),
     };
     try {
-      const response = await fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/pedido', {
+      const response = await fetch('http://127.0.0.1:8000/rest/pedido', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,13 +38,61 @@ export const Confirmar = ({
     } catch (error) {
       alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
     }
+    try {
+      const response = await fetch('http://127.0.0.1:8000/rest/sendConfirmationMail', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(pedido),
+      });
+    } catch (error) {
+      alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
+    }
   };
-
+  initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
+  const initialization = {
+    amount: total
+};
+const onSubmit = async (formData) => {
+    return new Promise<void>((resolve, reject) => {
+      fetch("https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/process_payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+        .then((response) => response.json())
+        .then((response) => {
+          if (response.status !== null && response.status === "approved") {
+            alert("El pago se realizó correctamente.");
+            enviarPedido();
+            resolve(); // Resuelve la promesa correctamente
+          } else {
+            alert("El pago no pudo realizarse, inténtelo más tarde");
+            reject(); // Rechaza la promesa en caso de error
+          }
+        })
+        .catch((error) => {
+          console.log("ERROR: " + error);
+          alert("Error al realizar el pago, inténtelo más tarde");
+          reject(); // Rechaza la promesa en caso de error
+        });
+     });
+    };
+    const onError = async (error) => {
+      // callback llamado para todos los casos de error de Brick
+        console.log("ERROR: "+error);
+    };
+    const onReady = async () => {
+        
+    };
   return (
     <div>
       {!isDivVisible && (
         <div className={styles.confirmar}>
-          {/* Mostrar la lista de pedidos aquí */}
           {allProducts.length ? (
             <div className={styles["order-list"]}>
               {allProducts.map((moto) => (
@@ -74,6 +119,13 @@ export const Confirmar = ({
             <button className={`${styles['button']} ${styles['button-right']}`} onClick={toggleDivVisibility}>
               Volver
             </button>
+            <p ></p>
+            <CardPayment
+              initialization={initialization}
+              onSubmit={onSubmit}
+              onReady={onReady}
+              onError={onError}
+            />
           </div>
         </div>
       )}
