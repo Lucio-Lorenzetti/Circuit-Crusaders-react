@@ -4,10 +4,14 @@ import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
 
 export const Confirmar = ({
   allProducts,
+  setAllProducts,
+  countProducts,
+  setCountProducts,
+  total,
+  setTotal,
   isDivVisible,
   setDivVisible,
-  token,
-  total
+  token
 }) => {
   const toggleDivVisibility = () => {
     setDivVisible(!isDivVisible);
@@ -38,19 +42,9 @@ export const Confirmar = ({
     } catch (error) {
       alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
     }
-    try {
-      const response = await fetch('http://127.0.0.1:8000/rest/sendConfirmationMail', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify(pedido),
-      });
-    } catch (error) {
-      alert('No se pudo enviar el pedido. Por favor, inténtelo nuevamente.');
-    }
+    
   };
+  
   initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
   const initialization = {
     amount: total
