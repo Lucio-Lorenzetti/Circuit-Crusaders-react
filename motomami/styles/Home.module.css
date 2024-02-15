@@ -154,6 +154,22 @@
 	border-radius: 10px;
   }
 
+  .pagination {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+  }
+  
+  .buttonContainer {
+	flex: 1;
+	display: flex;
+	justify-content: flex-start; /* Para el botón "Anterior" */
+  }
+  
+  .buttonContainer:last-child {
+	justify-content: flex-end; /* Para el botón "Siguiente" */
+  }
+  
   .order-list {
   border: 1px solid #ccc;
   border-radius: 5px;

@@ -110,7 +110,7 @@ const PaginaRecomendaciones = () => {
           </div>
         {recomendacion && (
           <div>
-            <h3 className={styles["title"]}>La recomendación según sus preferencias es...</h3>
+            <p className={styles["title"]}>La recomendación según sus preferencias es...</p>
             <div>
               <textarea
                 readOnly
