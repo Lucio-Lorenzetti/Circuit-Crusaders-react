@@ -22,7 +22,7 @@ export const FiltroEstilos = ({
   const [estilos, setEstilos] = useState([]);
 
   useEffect(() => {
-    fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/estilos')
+    fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/estilos')
       .then((response) => response.json())
       .then((estilos) => setEstilos(estilos));
   }, []);

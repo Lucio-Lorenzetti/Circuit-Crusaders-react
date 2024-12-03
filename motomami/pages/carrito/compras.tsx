@@ -22,13 +22,13 @@ function Compras() {
 
   useEffect(() => {
     if (id_estilo === '') {
-      fetch('https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos')
+      fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/motos')
         .then((response) => response.json())
         .then((motos) => setMotos(motos));
     } else {
       const obtenerMotosPorEstilo = async () => {
         try {
-          fetch(`https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/motos/estilos/${id_estilo}`)
+          fetch(`https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/motos/estilos/${id_estilo}`)
             .then((response) => response.json())
             .then((motos) => setMotos(motos));
           setCurrentPage(1);

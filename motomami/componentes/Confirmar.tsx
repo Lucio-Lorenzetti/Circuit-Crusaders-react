@@ -24,7 +24,7 @@ export const Confirmar = ({
       })),
     };
     try {
-      const response = await fetch('http://127.0.0.1:8000/rest/pedido', {
+      const response = await fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/pedido', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -51,7 +51,7 @@ export const Confirmar = ({
 };
 const onSubmit = async (formData) => {
     return new Promise<void>((resolve, reject) => {
-      fetch("https://circuit-crusaders-laravel-agusl1660.vercel.app/rest/process_payment", {
+      fetch("https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/process_payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
