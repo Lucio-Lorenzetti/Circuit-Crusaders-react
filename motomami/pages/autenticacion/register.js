@@ -30,7 +30,7 @@ const Register = () => {
     setError(false);
 
     try {
-      const response = await fetch('http://127.0.0.1:8000/rest/register', {
+      const response = await fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

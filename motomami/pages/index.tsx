@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <img src="https://lamoto.com.ar/wp-content/uploads/2021/12/Motos-electricas-Ducati-prueba-lateral.jpg" alt="Imagen 2" />
           </div>
           <div>
-            <img src="https://fondosmil.com/fondo/43749.jpg" alt="Imagen 3" />
+            <img src="https://images.unsplash.com/photo-1525013066836-c6090f0ad9d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fHw%3D" alt="Imagen 3" />
           </div>
           <div>
             <img src="https://i.ytimg.com/vi/ma7K3DnPutM/maxresdefault.jpg" alt="Imagen 4" />
@@ -43,7 +43,7 @@ const Home: NextPage = () => {
         </Carousel>
         <div className={styles['content-container']}>
           <div className={styles['logo-container']}>
-            <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Logo de la concesionaria" className={styles['logo']} />
+            <img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" className={styles['logo']} />
           </div>
           <div className={styles['buttons-container']}>
             <Link href="/autenticacion/register" passHref>

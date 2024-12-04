@@ -14,7 +14,7 @@ function Pedidos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('http://127.0.0.1:8000/rest/historial', {
+        const response = await fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/historial', {
           headers: {
             Authorization: `Bearer ${token}` // Agregar el token a la cabecera de la solicitud
           }
@@ -46,7 +46,9 @@ function Pedidos() {
       handlePageChange(currentPage - 1);
     }
   };
-
+  const handleVolverAMotos = () => {
+    window.history.back()
+  };
   const handleNextPage = () => {
     const totalPages = Math.ceil(data.length / itemsPerPage);
     if (currentPage < totalPages) {
@@ -91,6 +93,8 @@ function Pedidos() {
             <thead>
               <tr>
                 <th>Usted no ha realizado ningún pedido</th>
+                <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
+
               </tr>
             </thead>
           </table>
@@ -131,11 +135,16 @@ function Pedidos() {
                   Siguiente
                 </button>
               </div>
+              <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
+
             </div>
+            
           </>
         )}
       </div>
+     
     </div>
+    
   );
 }
 

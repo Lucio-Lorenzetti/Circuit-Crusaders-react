@@ -37,7 +37,7 @@ export const Header = ({
 
   return (
     <header>
-      <img src="https://i.ibb.co/W2Pmn2H/logomotomami.png" alt="Logo de la concesionaria" ></img>
+      <img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
       {isDivVisible && (
         <div className='container-icon'>
           <div

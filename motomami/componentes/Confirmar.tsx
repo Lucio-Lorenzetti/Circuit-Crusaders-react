@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from '../styles/Home.module.css';
-import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
+//import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
 
 export const Confirmar = ({
   allProducts,
@@ -45,7 +45,7 @@ export const Confirmar = ({
     
   };
   
-  initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
+ // initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
   const initialization = {
     amount: total
 };
@@ -62,7 +62,6 @@ const onSubmit = async (formData) => {
         .then((response) => {
           if (response.status !== null && response.status === "approved") {
             alert("El pago se realizó correctamente.");
-            enviarPedido();
             resolve(); // Resuelve la promesa correctamente
           } else {
             alert("El pago no pudo realizarse, inténtelo más tarde");
@@ -114,12 +113,7 @@ const onSubmit = async (formData) => {
               Volver
             </button>
             <p ></p>
-            <CardPayment
-              initialization={initialization}
-              onSubmit={onSubmit}
-              onReady={onReady}
-              onError={onError}
-            />
+           
           </div>
         </div>
       )}
