@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from '../styles/Home.module.css';
-//import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
+import { initMercadoPago, CardPayment } from '@mercadopago/sdk-react';
 
 export const Confirmar = ({
   allProducts,
@@ -45,7 +45,7 @@ export const Confirmar = ({
     
   };
   
- // initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
+  initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
   const initialization = {
     amount: total
 };
@@ -106,14 +106,21 @@ const onSubmit = async (formData) => {
           )}
 
           <div className={`${styles['buttons-container']} mt-3`}>
+          <CardPayment
+              initialization={initialization}
+              onSubmit={onSubmit}
+              onReady={onReady}
+              onError={onError}
+            />
+            <p ></p>
+
             <button className={`${styles['button']} ${styles['button-left']}`} onClick={enviarPedido}>
               Confirmar Pedido
             </button>
             <button className={`${styles['button']} ${styles['button-right']}`} onClick={toggleDivVisibility}>
               Volver
             </button>
-            <p ></p>
-           
+            
           </div>
         </div>
       )}
