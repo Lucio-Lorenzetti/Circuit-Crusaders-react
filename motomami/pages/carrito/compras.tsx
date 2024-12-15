@@ -5,6 +5,9 @@ import { Motos } from '../../componentes/Motos';
 import { Confirmar } from '../../componentes/Confirmar';
 import { FiltroEstilos } from '../../componentes/FiltroEstilos';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Link from 'next/link';
+import styles from '../../styles/Home.module.css';
+
 
 function Compras() {
   const [allProducts, setAllProducts] = useState([]);

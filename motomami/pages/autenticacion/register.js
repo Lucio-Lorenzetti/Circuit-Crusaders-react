@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -67,28 +68,44 @@ const Register = () => {
   };
 
   return (
-    <div className={styles['formulario']}>
+    <div>
+        <img className="col-md-12" src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
+    
+    <div className={styles['formulario']} style={{ marginTop: '20px' }}>
+      
       <h1>Registrarse</h1>
       <form className={styles['register']} onSubmit={handleSubmit}>
         <div>
           <label>Nombre: </label>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
         </div>
         <div>
-          <label>Email: </label>
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <input type="text" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }}/>
+        </div>
+        <div>
+          <label>Correo Electrónico: </label>
+        </div>
+        <div>
+          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }}/>
         </div>
         <div>
           <label>Contraseña: </label>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+        </div>
+        <div>
+          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }} />
         </div>
         <div>
           <label>Confirmar contraseña: </label>
-          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+        </div>
+        <div>
+          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}style={{ width: '380px', height: '30px',fontSize: '18px' }} />
         </div>
         <button className={styles['button']}>Registrarse</button>
+          <Link href="../" legacyBehavior>
+          <button className={styles['buttonVolver']}>Volver</button>
+        </Link>        
       </form>
       {error && <p>Los campos no se han completado correctamente</p>}
+    </div>
     </div>
   );
 };
