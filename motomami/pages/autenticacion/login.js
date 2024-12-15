@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 const Login = () => {
   // Definición de estados
@@ -62,19 +63,35 @@ const Login = () => {
 
   // Renderizar el componente del formulario de inicio de sesión
   return (
-    <div className={styles['login-container']}>
+    
+    <div >
+<header className="header">
+      <img 
+        src="https://i.ibb.co/yV7W6Td/logomotomami.png" 
+        alt="Logo de la concesionaria" 
+        className="logo" 
+      />
+    </header>
       <div className={styles['formulario']}>
-        <h1>Login</h1>
+        <h1>Iniciar Sesión</h1>
         <form className={styles['login']} onSubmit={handleSubmit}>
           <div>
-            <label>Email: </label>
-            <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+            <label>Correo Electrónico: </label>
+          </div>
+          <div>
+            <input type="text" value={email}  onChange={(e) => setEmail(e.target.value)} style={{ width: '380px', height: '30px' ,fontSize: '18px'}} />
           </div>
           <div>
             <label>Contraseña: </label>
-            <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
           </div>
-          <button className={styles['button']}>Iniciar Sesión</button>
+          <div>
+            <input type="password"  value={password}  onChange={(e) => setPassword(e.target.value)}  style={{ width: '380px', height: '30px',fontSize: '18px' }} />
+          </div>
+          <button className={styles['button']} >Ingresar</button>
+          <Link href="../" legacyBehavior>
+  <button className={styles['buttonVolver']}>Volver</button>
+</Link>
+
         </form>
         {error && <p>Las credenciales son incorrectas</p>}
       </div>

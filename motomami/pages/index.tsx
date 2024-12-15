@@ -32,7 +32,7 @@ const Home: NextPage = () => {
             <img src="https://images.unsplash.com/photo-1525013066836-c6090f0ad9d8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTF8fHxlbnwwfHx8fHw%3D" alt="Imagen 3" />
           </div>
           <div>
-            <img src="https://i.ytimg.com/vi/ma7K3DnPutM/maxresdefault.jpg" alt="Imagen 4" />
+            <img src="https://images.unsplash.com/photo-1732310428404-5d5a76994ee8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Imagen 4" />
           </div>
           <div>
             <img src="https://lamoto.com.ar/wp-content/uploads/2022/03/Moto-cafe-racer-no-es-para-cualquiera.jpg" alt="Imagen 5" />
@@ -41,16 +41,18 @@ const Home: NextPage = () => {
             <img src="https://images8.alphacoders.com/110/1105079.jpg" alt="Imagen 6" />
           </div>
         </Carousel>
-        <div className={styles['content-container']}>
-          <div className={styles['logo-container']}>
+        <div className={styles['logo-container']}>
             <img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" className={styles['logo']} />
           </div>
-          <div className={styles['buttons-container']}>
-            <Link href="/autenticacion/register" passHref>
-              <button className={styles['button']}>REGISTRARSE</button>
+        <div className={styles['content-container']}>
+          <div >
+            <Link href="/autenticacion/login" legacyBehavior>
+              <button className={styles['button']} style={{ width: '380px' }}>Iniciar Sesión</button>
             </Link>
-            <Link href="/autenticacion/login" passHref>
-              <button className={styles['button']}>INICIAR SESIÓN</button>
+          </div>
+          <div >
+            <Link href="/autenticacion/register" legacyBehavior>
+              <button className={styles['button']}style={{ width: '380px' }}>Registrarse</button>
             </Link>
           </div>
         </div>

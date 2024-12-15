@@ -57,11 +57,12 @@ header {
 
 .container-icon {
 	position: relative;
+	margin-bottom: 16px;
 }
 
 .count-products {
 	position: absolute;
-	top: 22%;
+	top: 42%;
 	right: 0;
 
 	background-color: #000;
@@ -85,7 +86,7 @@ header {
 
 .container-cart-products {
 	position: absolute;
-	top: 50px;
+	top: 65px;
 	right: 0;
 	color:rgb(0, 0, 0);
 	background-color: #fff;
@@ -144,24 +145,36 @@ header {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 20px 0;
-	gap: 20px;
+	padding: 15px 0;
+	gap: 10px;
+	
+	
 }
 
-.cart-total h3 {
+.cart-total span {
 	font-size: 20px;
-	font-weight: 700;
 }
 
 .total-pagar {
 	font-size: 20px;
-	font-weight: 900;
+	font-weight: 700;
 }
 
 .hidden-cart {
 	display: none;
 }
-
+.container-icon-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 10px; /* Espaciado entre los íconos */
+  }
+  
+  .icon-back {
+	width: 45px;
+	height: 45px;
+	cursor: pointer;
+  }
+  
 /* Main */
 
 .item {
@@ -225,10 +238,11 @@ header {
 }
 
 .btn-clear-all {
+	font-size: 20px;
+	font-weight: 400;
 	opacity: 1;
 	background-color: #ffb727;
 	color: #000000;
-	font-size: 1.2rem;
 	padding: 10px 20px;
 	border: none;
 	transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar efecto de transición al botón */
@@ -239,9 +253,7 @@ header {
 	width: 100%;
 	margin-top: 10px;
 	cursor: pointer;
-  	font-size: 16px;
-	  font-family: 'Lato';
-	  font-weight: bolder;
+ 
 }
 
 .btn-clear-all:hover{

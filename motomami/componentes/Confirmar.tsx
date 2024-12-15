@@ -13,6 +13,10 @@ export const Confirmar = ({
   setDivVisible,
   token
 }) => {
+  initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
+  const initialization = {
+      amount: total
+  };
   const toggleDivVisibility = () => {
     setDivVisible(!isDivVisible);
   };
@@ -45,16 +49,14 @@ export const Confirmar = ({
     
   };
   
-  initMercadoPago('TEST-aba732a4-7d7a-4d60-9616-db2740b1bd51');
-  const initialization = {
-    amount: total
-};
+  
 const onSubmit = async (formData) => {
     return new Promise<void>((resolve, reject) => {
       fetch("https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/process_payment", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`
         },
         body: JSON.stringify(formData),
       })
@@ -69,6 +71,7 @@ const onSubmit = async (formData) => {
           }
         })
         .catch((error) => {
+          console.log(formData)
           console.log("ERROR: " + error);
           alert("Error al realizar el pago, inténtelo más tarde");
           reject(); // Rechaza la promesa en caso de error

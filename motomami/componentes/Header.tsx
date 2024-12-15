@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 
 export const Header = ({
@@ -38,6 +39,8 @@ export const Header = ({
   return (
     <header>
       <img src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
+      <div className='container-icon-wrapper'>
+
       {isDivVisible && (
         <div className='container-icon'>
           <div
@@ -96,23 +99,32 @@ export const Header = ({
                 </div>
 
                 <div className='cart-total'>
-                  <h3>Total:</h3>
+                  <span>Total:</span>
                   <span className='total-pagar'>${total}</span>
                 </div>
 
                 <button className='btn-clear-all' onClick={onCleanCart}>
                   Vaciar
                 </button>
-                <button className='btn-clear-all' onClick={toggleDivVisibility}>
+                <button className='btn-clear-all'style={{WebkitBorderBottomLeftRadius: '10px',WebkitBorderBottomRightRadius: '10px'}} onClick={toggleDivVisibility}>
                   Confirmar
                 </button>
+
               </>
             ) : (
               <p className='cart-empty'>El carrito está vacío</p>
             )}
+            
           </div>
+
         </div>
+
       )}
+      <Link href="../" legacyBehavior>
+          <img src="https://img.icons8.com/?size=100&id=22112&format=png&color=000000" alt="Volver"         className='icon-back'
+ />
+      </Link>
+      </div>
     </header>
   );
 };
