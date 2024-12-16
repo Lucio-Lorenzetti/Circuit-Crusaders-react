@@ -57,7 +57,37 @@ const PaginaRecomendaciones = () => {
 
   return (
     <div className={styles['index-container']}>
-      {/* Carousel code */}
+      <Carousel
+          className={styles['background-carousel']}
+          showStatus={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={5000}
+          transitionTime={2000} 
+        >
+          <div>
+            <img src="https://wallpapers.com/images/hd/dirt-bike-pictures-qbg8srizpfxmctsy.jpg" alt="Imagen 1" />
+          </div>
+          <div>
+            <img src="https://www.mundodeportivo.com/files/image_948_465/uploads/2022/06/28/6554d77d1ce37.jpeg" alt="Imagen 2" />
+          </div>
+          <div>
+            <img src="https://png.pngtree.com/background/20230612/original/pngtree-many-motorcycles-parked-in-a-row-outside-picture-image_3364614.jpg" alt="Imagen 3" />
+          </div>
+          <div>
+            <img src="https://cdn.pixabay.com/photo/2014/07/31/23/10/biker-407123_1280.jpg" alt="Imagen 4" />
+          </div>
+          <div>
+            <img src="https://soymotero.net/wp-content/uploads/2023/04/husqvarna_te_300_2023_2.jpg" alt="Imagen 5" />
+          </div>
+          <div>
+            <img src="https://s1.abcstatics.com/media/summum/2019/10/04/bike-biker-cafe-racer-2549942-k0AH--1248x698@abc.jpg" alt="Imagen 6" />
+          </div>
+          <div>
+            <img src="https://i.pinimg.com/736x/22/50/57/225057aab91c2d3b714dd899aafecd90.jpg" alt="Imagen 7" />
+          </div>
+        </Carousel> 
       
       <div className={`${styles['table-container']} ${styles['translucent-background']}`}>
         <h1 className={styles["title"]}>Obtener una Recomendación</h1>
