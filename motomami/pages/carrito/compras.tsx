@@ -114,10 +114,6 @@ function Compras() {
           <Confirmar
             allProducts={allProducts}
             setAllProducts={setAllProducts}
-            total={total}
-            setTotal={setTotal}
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
             isDivVisible={isDivVisible}
             setDivVisible={setDivVisible}
             token={token} // Pasar el prop token a Confirmar
