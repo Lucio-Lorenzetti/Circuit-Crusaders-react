@@ -87,43 +87,50 @@ export const Confirmar = ({
     <div>
       {!isDivVisible && (
         <div className={styles.confirmar}>
-          {allProducts.length > 0 ? (
-            <div className={styles['order-list']}>
-              {allProducts.map(({ marca, monto, quantity, cartItemId }) => (
-                <div className={`${styles['order-item']} p-2 mb-3`} key={cartItemId}>
-                  <div
-                    className={`${styles['order-info']} d-flex justify-content-between align-items-center`}
-                  >
-                    <p className={`${styles['order-product-name']} mb-0`}>{marca}</p>
-                    <span className={styles['order-product-price']}>
-                      ${monto * quantity}
-                    </span>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className={styles['cart-empty']}>No hay pedidos para confirmar.</p>
-          )}
+          <div className="filter-container">
 
-          <div className={`${styles['buttons-container']} mt-3`}>
-            {preferenceId ? (
-              <Wallet initialization={{ preferenceId }} />
+            {allProducts.length > 0 ? (
+              <div className={styles['order-list']}>
+                {allProducts.map(({ marca, monto, quantity, cartItemId }) => (
+                  <div className={`${styles['order-item']} p-2 mb-3`} key={cartItemId}>
+                    <div
+                      className={`${styles['order-info']} d-flex justify-content-between align-items-center`}
+                    >
+                      <p className={`${styles['order-product-name']} mb-0`}>{marca}</p>
+                      <span className={styles['order-product-price']}>
+                        ${monto * quantity}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
             ) : (
-              <button
-                className={`${styles['button']} ${styles['button-left']}`}
-                onClick={createPreference}
-              >
-                Comprar
-              </button>
+              <p className={styles['cart-empty']}>No hay pedidos para confirmar.</p>
             )}
-            <button
-              className="pagination-button"
-              onClick={() => setDivVisible(!isDivVisible)}
-            >
-              Volver
-            </button>
-          </div>
+            <div className="table-container">
+                <div>
+                  {preferenceId ? (
+                    <Wallet initialization={{ preferenceId }} />
+                  ) : (
+                    <button
+                      className="filter-button"
+                      onClick={createPreference}
+                    >
+                      Comprar
+                    </button>
+                  )}
+                </div>
+                <div>
+                  <button
+                    className="filter-button"
+                    onClick={() => setDivVisible(!isDivVisible)}
+                  >
+                    Volver
+                  </button>
+                </div>
+            </div>
+            </div>
+
         </div>
       )}
     </div>

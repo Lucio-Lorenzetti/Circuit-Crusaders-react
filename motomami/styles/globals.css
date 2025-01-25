@@ -28,8 +28,6 @@ a:hover {
 	box-sizing: border-box;
 }
 
-
-
 .icon-cart {
 	width: 40px;
 	height: 40px;
@@ -49,15 +47,21 @@ img {
 
 /* Header */
 header {	
-	
 	display: flex;
 	justify-content: space-between;
-	padding: 30px 0 40px 0;
-}
+	align-items: center;
+	background-color: #6d4e10;
+	color: #fff;
+	border-bottom: 2px solid #ffb727;
+	border-bottom-left-radius: 20px; /* Esquina inferior izquierda redondeada */
+	border-bottom-right-radius: 20px; /* Esquina inferior derecha redondeada */
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra para un efecto visual atractivo */
+	margin-bottom: 18px;
+	padding-left: 18px;
 
+}
 .container-icon {
 	position: relative;
-	margin-bottom: 16px;
 }
 
 .count-products {
@@ -88,16 +92,16 @@ header {
 	position: absolute;
 	top: 65px;
 	right: 0;
-	color:rgb(0, 0, 0);
-	background-color: #fff;
-	width: 400px;
+	color:#fcbf00;
+	background-color: #48340b;
+	max-width: 400px;
 	z-index: 1;
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 	border-radius: 10px;
 }
 
 .cart-product {
-	color:rgb(0, 0, 0);
+	color:#fcbf00;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -107,19 +111,19 @@ header {
 }
 
 .info-cart-product {
-	color:rgb(0, 0, 0);
+	color:#fcbf00;
 	display: flex;
 	justify-content: space-between;
 	flex: 0.8;
 }
 
 .titulo-producto-carrito {
-	color:rgb(0, 0, 0);
+	color:#fcbf00;
 	font-size: 20px;
 }
 
 .precio-producto-carrito {
-	color:rgb(0, 0, 0);
+	color:#fcbf00;
 	font-weight: 700;
 	font-size: 20px;
 	margin-left: 10px;
@@ -165,15 +169,15 @@ header {
 }
 .container-icon-wrapper {
 	display: flex;
-	align-items: center;
-	gap: 10px; /* Espaciado entre los íconos */
-  }
-  
-  .icon-back {
-	width: 45px;
-	height: 45px;
+	justify-content: right;
+	padding-bottom: 18px;
+}
+
+.icon-back {
+	max-width: 40px;
+	max-height: 40px;
 	cursor: pointer;
-  }
+}
   
 /* Main */
 
@@ -181,11 +185,16 @@ header {
 	border-radius: 10px;
 	width: 100%; /* Ocupa todo el espacio disponible en el contenedor */
 	font-family: 'Lato';
-	color: #fff;
+	background-color: #6d4e10; /* Fondo secundario */
+	color: #fcbf00; /* Texto en primario */
+	margin-bottom: 20px; /* Espaciado entre items */
+
 }
 
 .item:hover {
 	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+	transform: translateY(-5px); /* Efecto de levantamiento */
+
 }
 
 .item img {
@@ -201,7 +210,7 @@ header {
 }
 
 .item:hover img {
-	transform: scale(1.2);
+	transform: scale(1.1);
 }
 
 .info-product {
@@ -214,19 +223,27 @@ header {
 
 .price {
 	font-size: 18px;
-	font-weight: 900;
+	font-weight: bold;
+	color: #fcbf00; /* Primario */
+
 }
 
 .info-product button {
-	border: none;
-	background: none;
-	background-color: #000;
-	color: #fff;
-	padding: 15px 10px;
-	cursor: pointer;
-	border: 1px solid #ccc;
+border: none;
+  background-color: #48340b; /* Terciario */
+  color: #fcbf00; /* Texto en primario */
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 8px; /* Botones redondeados */
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 
 }
+.info-product button:hover {
+	background-color: #6d4e10; /* Fondo secundario en hover */
+	color: #ffffff; /* Texto blanco para contraste */
+	transform: scale(1.05); /* Efecto de agrandamiento */
+  }
 
 .cart-empty {
 	padding: 20px;
@@ -242,7 +259,7 @@ header {
 	font-weight: 400;
 	opacity: 1;
 	background-color: #ffb727;
-	color: #000000;
+	color: #6d4e10;
 	padding: 10px 20px;
 	border: none;
 	transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar efecto de transición al botón */
@@ -257,7 +274,7 @@ header {
 }
 
 .btn-clear-all:hover{
-  background-color: rgb(0, 0, 0);
+  background-color:#6d4e10;
   color: #ffb727;
 }
 
@@ -276,7 +293,7 @@ header {
   }
  
   body {
-    background: linear-gradient(to bottom, #fcbf00, rgb(0, 0, 0));
+    background: linear-gradient(to bottom, #ffb727,#ffb727);
     background-attachment: fixed;
     font-family: 'Lato';
     background-size: cover;
@@ -308,26 +325,56 @@ header {
 	list-style-type: none;
 	padding-left: 0;
   }
+  /* Contenedor general */
+.filter-container {
+	background-color: #6d4e10; /* Secundario */
+	padding: 20px;
+	border-radius: 12px; /* Bordes redondeados */
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+	margin-bottom: 18px;
+  }
   
+  /* Título */
+  .filter-title {
+	font-size: 20px;
+	font-weight: bold;
+	color: #fcbf00; /* Primario */
+	margin-bottom: 15px;
+	text-align: center;
+  }
+  
+  /* Botones */
   .filter-button {
 	display: block;
 	width: 100%;
-	background-color: #000000;
-	border: 1px solid #ccc;
-	padding: 8px 12px;
-	margin-bottom: 8px;
-	text-align: left;
-	color: #ffffff;
+	background-color: #48340b; /* Terciario */
+	border: 1px solid #6d4e10; /* Secundario */
+	padding: 12px 16px; /* Más espacio para un diseño cómodo */
+	margin-bottom: 10px; /* Separación entre botones */
+	text-align: center;
+	color: #fcbf00; /* Texto en color primario */
 	text-decoration: none;
+	border-radius: 8px; /* Bordes redondeados */
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: all 0.3s ease; /* Transición suave */
   }
+  
   .filter-button.active {
-	background-color: white;
-	color: #000000;
+	background-color: #fcbf00; /* Activo en color primario */
+	color: #48340b; /* Texto en color terciario */
+	font-weight: bold;
+	border: 1px solid #48340b;
   }
+  
   .filter-button:hover {
-	background-color: #1f1f1f;
+	background-color: #6d4e10; /* Secundario en hover */
+	color: #ffffff; /* Texto blanco para contraste */
   }
+  
 
+  
   .centered-div {
   position: absolute;
   top: 50%;
@@ -336,36 +383,30 @@ header {
   text-align: center;
 }
 .pagination-container {
-	display: flex;
-	justify-content: flex-end;
-	align-items: center;
-	margin-top: 20px;
-	justify-content: center;
-	font-family: 'Lato';
-
-
+	text-align: center;
+  	margin-top: 20px;
   }
   
   .pagination-button {
-	margin-left: 10px;
 	border: none;
-	background: none;
-	background-color: #000;
-	color: #fff;
-	padding: 15px 10px;
+	background-color: #48340b; /* Terciario */
+	color: #fcbf00; /* Primario */
+	padding: 10px 20px;
+	margin: 0 5px;
 	cursor: pointer;
-	margin-right: 20px; 
-	margin-bottom: 40px; 
-	border: 1px solid #ccc;
+	border-radius: 5px;
+	font-size: 14px;
+	transition: background-color 0.3s ease, transform 0.3s ease;
   }
-  .pagination-text{
-	margin-right: 20px; 
-	margin-bottom: 40px; 
-	color: #fff;
-
+  .pagination-button:hover {
+	background-color: #6d4e10; /* Secundario en hover */
+	color: #ffffff;
+	transform: scale(1.1);
   }
-  .pagination-button:first-child {
-	margin-left: 0;
+  
+  .pagination-text {
+	font-size: 16px;
+	color: #6d4e10; /* Primario */
   }
  
   .confirmar{
@@ -395,3 +436,102 @@ header {
 	padding: 10px;
 	margin-top: 10px;
   }
+/*Footer*/
+.footer-container {
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+	background-color: #6d4e10;
+	color: #ffffff;
+	font-family: 'Lato', sans-serif;
+	width: 100%;
+	margin-top: 30px;
+  }
+  
+  .footer-content {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 20px;
+	text-align: center;
+  }
+  
+  .footer-section {
+	flex: 1;
+	min-width: 200px;
+	margin: 10px 0;
+  }
+  
+  .footer-section h3 {
+	font-size: 18px;
+	margin-bottom: 15px;
+  }
+  
+  .footer-section p,
+  .footer-section ul {
+	font-size: 14px;
+	line-height: 1.8;
+  }
+  
+  .footer-section ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  .footer-section ul li {
+	margin: 8px 0;
+  }
+  
+  .footer-section ul li a {
+	text-decoration: none;
+	color: #fcbf00;
+	transition: color 0.3s ease;
+  }
+  
+  .footer-section ul li a:hover {
+	color: #fff;
+  }
+  
+  .social-icons {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+  }
+  
+  .social-icons img {
+	width: 30px;
+	height: 30px;
+	transition: transform 0.3s ease;
+  }
+  
+  .social-icons img:hover {
+	transform: scale(1.2);
+  }
+  
+  .footer-bottom {
+	margin-top: 30px;
+	padding-top: 20px;
+	border-top: 1px solid rgba(255, 255, 255, 0.2);
+	text-align: center;
+  }
+  
+  .footer-bottom p {
+	font-size: 14px;
+  }
+  
+  .contact-button {
+	margin-top: 10px;
+	padding: 10px 20px;
+	background-color: #fcbf00;
+	color: #6d4e10;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .contact-button:hover {
+	background-color: #fff;
+	color: #6d4e10;
+  }
+  

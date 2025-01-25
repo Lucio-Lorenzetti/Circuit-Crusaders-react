@@ -65,32 +65,32 @@ const Login = () => {
   return (
     
     <div >
-<header className="header">
-      <img 
-        src="https://i.ibb.co/yV7W6Td/logomotomami.png" 
-        alt="Logo de la concesionaria" 
-        className="logo" 
-      />
-    </header>
+      <header className="header">
+        <img 
+          src="https://i.ibb.co/yV7W6Td/logomotomami.png" 
+          alt="Logo de la concesionaria" 
+          className="logo" 
+        />
+      </header>
       <div className={styles['formulario']}>
         <h1>Iniciar Sesión</h1>
         <form className={styles['login']} onSubmit={handleSubmit}>
           <div>
-            <label>Correo Electrónico: </label>
+            <label className={styles["form-label"]}>Correo Electrónico: </label>
           </div>
           <div>
-            <input type="text" value={email}  onChange={(e) => setEmail(e.target.value)} style={{ width: '380px', height: '30px' ,fontSize: '18px'}} />
+            <input className={styles["input-field"]} type="text" value={email}  onChange={(e) => setEmail(e.target.value)}  />
           </div>
           <div>
-            <label>Contraseña: </label>
+            <label className={styles["form-label"]}>Contraseña: </label>
           </div>
           <div>
-            <input type="password"  value={password}  onChange={(e) => setPassword(e.target.value)}  style={{ width: '380px', height: '30px',fontSize: '18px' }} />
+            <input className={styles["input-field"]} type="password"  value={password}  onChange={(e) => setPassword(e.target.value)} />
           </div>
           <button className={styles['button']} >Ingresar</button>
           <Link href="../" legacyBehavior>
-  <button className={styles['buttonVolver']}>Volver</button>
-</Link>
+            <button className={styles['buttonVolver']}>Volver</button>
+          </Link>
 
         </form>
         {error && <p>Las credenciales son incorrectas</p>}

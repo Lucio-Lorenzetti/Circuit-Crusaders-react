@@ -31,6 +31,36 @@ function Pedidos() {
     }
   }, [token]);
 
+  const imagenesCarrusel = [
+    {
+      src: "https://cdn.shopify.com/s/files/1/0608/7819/2888/files/kawasaki-ninja-2023.jpg?v=1674124860.jpg",
+      alt: "Imagen 1"
+    },
+    {
+      src: "https://www.mundodeportivo.com/files/image_948_465/uploads/2022/06/28/6554d77d1ce37.jpeg",
+      alt: "Imagen 2"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D.jpg",
+      alt: "Imagen 3"
+    },
+    {
+      src: "https://images.unsplash.com/photo-1625677797043-42cc0255f62f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZW5kdXJvfGVufDB8fDB8fHww.jpg",
+      alt: "Imagen 4"
+    },
+    {
+      src: "https://andromedamoto.com/cdn/shop/articles/bmw-r-ninet-racer_83298855-cef8-44e7-b1f7-4de388c5b11e.jpg?v=1650974199.jpg",
+      alt: "Imagen 5"
+    },
+    {
+      src: "https://s1.abcstatics.com/media/summum/2019/10/04/bike-biker-cafe-racer-2549942-k0AH--1248x698@abc.jpg",
+      alt: "Imagen 6"
+    },
+    {
+      src: "https://motor.elpais.com/wp-content/uploads/2022/06/alquilar-moto-verano-1-1046x616.jpg",
+      alt: "Imagen 7"
+    }
+  ];
   // Calcular las motos a mostrar en la página actual
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -57,92 +87,79 @@ function Pedidos() {
   };
 
   return (
-    <div className={styles['index-container']}>
-      <Carousel
-        className={styles['background-carousel']}
-        showStatus={false}
-        showThumbs={false}
-        infiniteLoop={true}
-        autoPlay={true}
-        interval={5000}
-        transitionTime={2000} 
-      >
-          <div>
-            <img src="https://cdn.shopify.com/s/files/1/0608/7819/2888/files/kawasaki-ninja-2023.jpg?v=1674124860.jpg" alt="Imagen 1" />
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8fA%3D%3D.jpg" alt="Imagen 2" />
-          </div>
-          <div>
-            <img src="https://images.unsplash.com/photo-1625677797043-42cc0255f62f?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8ZW5kdXJvfGVufDB8fDB8fHww.jpg" alt="Imagen 3" />
-          </div>
-          <div>
-            <img src="https://andromedamoto.com/cdn/shop/articles/bmw-r-ninet-racer_83298855-cef8-44e7-b1f7-4de388c5b11e.jpg?v=1650974199.jpg" alt="Imagen 4" />
-          </div>
-          <div>
-            <img src="https://exclusivomotos.com/wp-content/uploads/2021/07/KTM-RC-8C.jpg" alt="Imagen 5" />
-          </div>
-          <div>
-            <img src="https://motor.elpais.com/wp-content/uploads/2022/06/alquilar-moto-verano-1-1046x616.jpg" alt="Imagen 6" />
-          </div>
-        </Carousel>      
-      
+    <div className={styles.container}>
+      <div className={styles.carousel}>
+        <Carousel
+          showThumbs={false} 
+          autoPlay 
+          infiniteLoop 
+          showStatus={false} 
+          interval={5000} 
+          emulateTouch 
+          useKeyboardArrows 
+        >
+          {imagenesCarrusel.map((imagen, index) => (
+            <div key={index}>
+              <img src={imagen.src} alt={imagen.alt} />
+            </div>
+          ))}
+        </Carousel>
+      </div>
+      <div className={styles.overlay}>
         <div className={`${styles['table-container']} ${styles['translucent-background']}`}>
-        {data.length === 0 ? (
-          <table>
-            <thead>
-              <tr>
-                <th>Usted no ha realizado ningún pedido</th>
-                <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
-
-              </tr>
-            </thead>
-          </table>
-        ) : (
-          <>
+          {data.length === 0 ? (
             <table>
               <thead>
                 <tr>
-                  <th>Fecha</th>
-                  <th>Moto</th>
-                  <th>Año</th>
-                  <th>Cilindrada</th>
-                  <th>Monto</th>
+                  <th>Usted no ha realizado ningún pedido</th>
+                  <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
+
                 </tr>
               </thead>
-              <tbody>
-                {currentItems.map((item, index) => (
-                  <tr key={index}>
-                    <td>{item.fecha_pedido}</td>
-                    <td>{item.moto.marca} - {item.moto.modelo}</td>
-                    <td>{item.moto.anio}</td>
-                    <td>{item.moto.cilindrada}</td>
-                    <td>{item.moto.monto}</td>
-                  </tr>
-                ))}
-              </tbody>
             </table>
+          ) : (
+            <>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Fecha</th>
+                    <th>Moto</th>
+                    <th>Año</th>
+                    <th>Cilindrada</th>
+                    <th>Monto</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {currentItems.map((item, index) => (
+                    <tr key={index}>
+                      <td>{item.fecha_pedido}</td>
+                      <td>{item.moto.marca} - {item.moto.modelo}</td>
+                      <td>{item.moto.anio}</td>
+                      <td>{item.moto.cilindrada}</td>
+                      <td>{item.moto.monto}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
 
-            <div className={styles.pagination}>
-              <div className={styles.buttonContainer}>
-                <button className={styles['button']} onClick={handlePreviousPage} disabled={currentPage === 1}>
-                  Anterior
-                </button>
-              </div>
-              {/*<span>{currentPage} de {Math.ceil(data.length / itemsPerPage)}</span>*/}
-              <div className={styles.buttonContainer}>
-                <button className={styles['button']} onClick={handleNextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>
-                  Siguiente
-                </button>
-              </div>
-              <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
+              <div className="pagination-container">
+                  <button className="pagination-button"  onClick={handlePreviousPage} disabled={currentPage === 1}>
+                    Anterior
+                  </button>
+                {/*<span>{currentPage} de {Math.ceil(data.length / itemsPerPage)}</span>*/}
+                  <button className="pagination-button" onClick={handleNextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>
+                    Siguiente
+                  </button>
 
-            </div>
-            
-          </>
-        )}
-      </div>
-     
+              </div>
+              <div  style={{ display: 'flex', marginTop: '20px' }}>
+                <button onClick={handleVolverAMotos} className="filter-button" >Ir a nuestras motos</button>
+              </div>
+            </>
+          )}
+        </div>
+        </div>
+
     </div>
     
   );

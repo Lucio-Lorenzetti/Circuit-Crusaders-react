@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 export const FiltroEstilos = ({
   allProducts,
@@ -7,6 +9,7 @@ export const FiltroEstilos = ({
   countProducts,
   setCountProducts,
   setTotal,
+  token,
   isDivVisible,
   setDivVisible,
   id_estilo,
@@ -18,8 +21,21 @@ export const FiltroEstilos = ({
     const estiloSeleccionado = event.target.value;
     setEstiloActual(estiloSeleccionado);
   };
+  const router = useRouter();
 
   const [estilos, setEstilos] = useState([]);
+const handleRecuperarPedidos = () => {
+    router.push({
+      pathname: '/carrito/pedidosCliente',
+      query: { token: token },
+    });
+  };
+
+  const handlePedirRecomendacion = () => {
+    router.push({
+      pathname: '../recomendacion/recomendarMoto',
+    });
+  };
 
   useEffect(() => {
     fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/estilos')
@@ -28,9 +44,11 @@ export const FiltroEstilos = ({
   }, []);
 
   return (
-    <div>
+    <div className="filter-container">
       {isDivVisible && (
-        <div>
+        <>
+        
+          <div className="filter-title">Filtrar por Estilo</div>
             {estilos.map((estilo) => (
               <div key={estilo.nro_estilo}>  
                 <button
@@ -50,8 +68,15 @@ export const FiltroEstilos = ({
             >
               LIMPIAR FILTROS
             </button>
-          </div>      
-          )}
+            
+        </>    
+      )}
+      <button className={`d-flex justify-content-center filter-button`}
+              value="" onClick={handleRecuperarPedidos}>RECUPERAR PEDIDOS
+            </button>
+            <button className={`d-flex justify-content-center filter-button`}
+              value="" onClick={handlePedirRecomendacion}>PEDIR RECOMENDACIÓN
+            </button>
     </div>
   );
 };

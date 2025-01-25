@@ -1,31 +1,85 @@
-.index-container {
-	position: relative;
-	height: 100vh;
 
+.carousel {
+	position: relative;
+	width: 100%;
+	height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  }
+  
+/* Overlay (capa de contenido encima del carrusel) */
+.overlay {
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+z-index: 1; /* Asegura que el contenido se muestre por encima del carrusel */
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+text-align: center;
+color: white; /* Color de texto blanco para el contenido encima */
+}
+/* Contenedor principal del carrusel */
+.carousel .slider-wrapper {
+	border-radius: 10px; /* Ejemplo: bordes redondeados */
+	overflow: hidden;
+  }
+  
+  /* Imagen dentro del carrusel */
+  .carousel img {
+	object-fit: cover; /* Ajusta las imágenes para que se vean bien */
+	height: 100vh; /* Altura completa de la pantalla */
+	width: 100vw; /* Anchura completa de la pantalla */
+  }
+  
+  /* Flechas de navegación */
+  .carousel .control-arrow {
+	background: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+	border-radius: 50%; /* Botones circulares */
+	padding: 10px;
+  }
+  
+  /* Puntos indicadores */
+  .carousel .control-dots .dot {
+	background: #ffffff; /* Color blanco */
+	opacity: 0.7;
+  }
+  
+  .carousel .control-dots .dot.selected {
+	background: #ff0000; /* Color rojo cuando está seleccionado */
+	opacity: 1;
+  }
+  
+/*AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
+
+
+.index-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 1rem;
 }
 
-.background-image {
-	
-  background-image: url('https://www.motociclismo.es/uploads/s1/11/61/84/19/manillar-cafe-racer.jpeg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-	background-origin: content-box; 
-	margin: 0 auto;
+/* Configuración del carrusel */
+.background-carousel {
+	position: fixed;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
+	z-index: -1;
+	overflow: hidden; /* Asegura que no haya desbordamiento */
 }
 
-.background-carousel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+.background-carousel img {
+	width: 100%;
+	height: 100%; /* Obliga a que las imágenes cubran toda la pantalla */
+	object-fit: cover; /* Mantiene la proporción y llena el contenedor */
 }
 
-
+/* Contenido principal */
 .content-container {
 	display: flex;
 	flex-direction: column;
@@ -35,11 +89,36 @@
 }
 
 .logo-container {
-  /*background-color: #ffb727;
-  border-radius: 80%;*/
-	margin-bottom: 20px;
+
+  background-color: rgba(201, 150, 9, 0.684); /* Fondo semitransparente */
+  border-radius: 10px; /* Bordes redondeados */
+
 }
 
+.button {
+	margin-top: 20px;
+	opacity: 1;
+	background-color: #48340b; /* Terciario */
+	border: 1px solid #6d4e10; /* Secundario */
+	color: #fcbf00; /* Texto en color primario */
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	text-decoration: none;
+}
+
+.button:hover {
+	background-color: #6d4e10; /* Secundario en hover */
+	color: #ffffff; /* Texto blanco para contraste */
+	transform: scale(1.1);
+}
+
+
+
+/*Otra cosa*/
 .logo {
   border-color: white;
 	max-width: 100%;
@@ -54,58 +133,120 @@
 	justify-content: center;
 	align-items: center;
 }
-.buttonVolver{
-	margin-top: 20px;
 
-	opacity: 1;
-	background-color: #3c6af2;
-	color: #000000;
-	font-size: 1.2rem;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar efecto de transición al botón */
-	text-decoration: none;
-}
-.button {
-	margin-top: 20px;
-
-	opacity: 1;
-	background-color: #ffb727;
-	color: #000000;
-	font-size: 1.2rem;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.3s ease; /* Agregar efecto de transición al botón */
-	text-decoration: none;
-}
-
-.button:hover {
-	background-color: #fcbf00;
-	transform: scale(1.1); /* Agregar efecto de escala al hacer hover */
-}
-
+.background-image {
+	
+	background-image: url('https://www.motociclismo.es/uploads/s1/11/61/84/19/manillar-cafe-racer.jpeg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-origin: content-box; 
+	margin: 0 auto;
+	width: 100%;
+	height: 100%;
+  }
+  
 /*Login y Register*/
-.formulario{
+/* Estilo general del formulario */
+.formulario {
 	position: absolute;
-	top: 50%;
+	top: 55%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	background-color: #313131d2;
+	background-color: #6d4e10; /* Fondo primario */
 	color: #ffffff;
+	padding: 15px 20px;
+	border-radius: 8px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	max-width: 400px;
+  }
+  .form-label {
+	display: block;
+	margin-bottom: 8px;
+	font-size: 1rem;
+	color: #ffb727; /* Secundario */
+	font-weight: bold;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	transition: color 0.3s ease;
+  }
+  
+  .form-label:hover {
+	color: #fcbf00; /* Color más claro del secundario */
+  }
+  
+  /* Estilo de los inputs */
+  .input-field {
+	font-size: 1.2rem;
+	margin: 5px 0;
+	padding: 5px 10px;
+	border: 1px solid #ffb727; /* Borde secundario */
+	border-radius: 4px;
+	box-sizing: border-box;
+  }
+  
+ /* Estilo de los botones */
+.button {
+	margin-top: 20px;
+	background-color: #ffb727; /* Fondo secundario */
+	color: #000000; /* Texto oscuro */
+	font-size: 1.2rem;
 	padding: 10px 20px;
 	border: none;
 	border-radius: 4px;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	align-items: center;
-	font-family: Arial;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	text-decoration: none;
+	width: 100%;
+  }
+  
+  .button:hover {
+	background-color: #48340b; /* Fondo terciario */
+	transform: scale(1.05);
+  }
+  
+  .buttonVolver {
+	margin-top: 10px;
+	background-color: #48340b; /* Fondo terciario */
+	color: #ffffff; /* Texto claro */
+	font-size: 1.2rem;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+	text-decoration: none;
+	width: 100%;
+  }
+  
+  .buttonVolver:hover {
+	background-color: #48340b; /* Fondo terciario */
+	transform: scale(1.05);
+  }
+  
+  /* Mensaje de error */
+  .error-message {
+	color: #ff4d4f; /* Rojo para errores */
+	font-size: 14px;
+	margin-top: 10px;
+  }
+  
+  
 
-}
+  
+  /* Estilo del formulario en pantallas pequeñas */
+  @media (max-width: 480px) {
+	.formulario {
+	  width: 97%;
+	  padding: 15px;
+	}
+
+  }
 
 .login {
 	display: flex;
@@ -123,8 +264,7 @@
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
-	/*background-color: #313131d2;*/
-	color: #ffffff;
+	color: #fcbf00;
 	font-size: 1.2rem;
 	padding: 10px 20px;
 	border: none;
@@ -135,28 +275,129 @@
 	align-items: center;
 	font-family: Arial;
 	width: 90%; /* Ocupar el 90% de la pantalla */
+	box-sizing: border-box;
+	
   }
   
   .table-container table {
 	width: 100%;
 	border-collapse: collapse;
 	border: none;
-	border-radius: 10px;
+	
+	
   }
   
-  /*.table-container th,
-  .table-container td {
-	padding: 8px;
-	text-align: center;
-	border: 1px solid #ddd;
-  }*/
+  .table-container th{
+	text-align: left;
+	padding: 10px;
+	font-size: 1rem;
+  }
+   .table-container td {
+	text-align: left;
+	padding: 10px;
+	font-size: 1rem;
+	
+	
+  }
+  
+  .table-container th {
+	background-color: #48340b;
+  }
+  
+  .table-container tr:nth-child(even) {
+	background-color: #48340b;
+	
+  }
+  
+  .table-container tr:nth-child(odd) {
+	background-color: #6d4e10;
+	
+  }
   
   .translucent-background {
-	background-color: rgba(0, 0, 0, 0.5); 
-	padding: 20px; 
+	background-color: rgba(0, 0, 0, 0.5);
+	padding: 20px;
 	border-radius: 10px;
   }
+  /*PEDIDOS */
+  @media (max-width: 500px) {
+  /* Convierte las filas de la tabla en tarjetas */
+  .table-container table {
+    display: block;
+	justify-items: center;
+	align-content: center;
+    width: 100%;
+  }
 
+  .table-container thead {
+    display: none; /* Oculta el encabezado en pantallas pequeñas */
+  }
+
+  .table-container tbody tr {
+    display: block;
+    margin-bottom: 15px;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    background-color: #000000;
+  }
+
+  .table-container tbody td {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-bottom: 1px solid #000000;
+    font-size: 0.9rem;
+  }
+
+  .table-container tbody td:last-child {
+    border-bottom: none;
+  }
+
+  .table-container tbody td::before {
+    content: attr(data-label); /* Usa el atributo data-label para mostrar el encabezado */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #ffb727;
+    margin-right: 10px;
+  }
+}
+  /* Envoltorio para scroll horizontal */
+  .table-wrapper {
+	overflow-x: auto; /* Permitir desplazamiento horizontal */
+	width: 100%;
+  }
+  @media (max-width: 420px) {
+	.table-container {
+	  font-size: 1rem;
+	  padding: 15px;
+
+	}
+  
+	.table-container th, .table-container td {
+	  font-size: 0.9rem;
+	  padding: 8px;
+	}
+	.translucent-background{
+		width: 97%;
+
+	}
+  }
+  @media (max-width: 480px) {
+	.table-container {
+		padding: 10px;
+	}
+  
+	.table-container table {
+	  font-size: 0.8rem;
+	}
+
+	.translucent-background{
+		width: 97%;
+
+	}
+  
+	
+  }
   .pagination {
 	display: flex;
 	justify-content: space-between;
@@ -174,15 +415,19 @@
   }
   
   .order-list {
-  border: 1px solid #ccc;
+  border: 2px solid #fcbf00;
   border-radius: 5px;
   padding: 10px;
+  margin-bottom: 10px;
+  color: #fcbf00; /* Rojo para errores */
+
+
 }
 
 .order-item {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f9f9f9;
+  background-color: #48340b;
   border-radius: 5px;
 }
 
@@ -201,5 +446,34 @@
   font-size: 14px;
 }
 
-
+/*Recomendacion*/
+.textarea {
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	border: 1px solid #fcbf00; /* Color terciario */
+	font-size: 1rem;
+	margin-bottom: 20px;
+	background-color: #ffffff;
+	color: #000000; /* Texto negro para contraste */
+	resize: none;
+  }
   
+  .textarea:focus {
+	outline: none;
+	border-color: #ffb727; /* Enfasis con color secundario */
+	box-shadow: 0px 0px 8px rgba(255, 183, 39, 0.5);
+  }
+  @media (max-width: 768px) {
+	
+  
+	.title {
+	  font-size: 1.5rem;
+	}
+  
+	.textarea {
+	  font-size: 0.9rem;
+	}
+  
+  }
+ 

@@ -5,8 +5,7 @@ import { Motos } from '../../componentes/Motos';
 import { Confirmar } from '../../componentes/Confirmar';
 import { FiltroEstilos } from '../../componentes/FiltroEstilos';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Link from 'next/link';
-import styles from '../../styles/Home.module.css';
+import Footer from '../../componentes/Footer';
 
 
 function Compras() {
@@ -44,23 +43,10 @@ function Compras() {
     }
   }, [id_estilo]);
 
-  const handleRecuperarPedidos = () => {
-    router.push({
-      pathname: '/carrito/pedidosCliente',
-      query: { token: token },
-    });
-  };
-
-  const handlePedirRecomendacion = () => {
-    router.push({
-      pathname: '../recomendacion/recomendarMoto',
-    });
-  };
-
   return (
-    <div className="container">
+    <><div className="container">
       <div className="row">
-        <div className="col-md-12">
+        <div className="col-md-12 col-sm-12">
           <Header
             allProducts={allProducts}
             setAllProducts={setAllProducts}
@@ -69,8 +55,7 @@ function Compras() {
             countProducts={countProducts}
             setCountProducts={setCountProducts}
             isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible}
-          />
+            setDivVisible={setDivVisible} />
         </div>
         <div className="col-md-12 col-lg-2 col-sm-12">
           <FiltroEstilos
@@ -78,6 +63,7 @@ function Compras() {
             setAllProducts={setAllProducts}
             total={total}
             setTotal={setTotal}
+            token={token} // Pasar el prop token a Confirmar
             countProducts={countProducts}
             setCountProducts={setCountProducts}
             isDivVisible={isDivVisible}
@@ -85,15 +71,9 @@ function Compras() {
             id_estilo={id_estilo}
             setEstiloActual={setEstiloActual}
             motos={motos}
-            setMotos={setMotos}
-          />
-          <button className={`d-flex justify-content-center filter-button`}
-            value="" onClick={handleRecuperarPedidos}>RECUPERAR PEDIDOS
-          </button>
-          <button className={`d-flex justify-content-center filter-button`}
-            value="" onClick={handlePedirRecomendacion}>PEDIR RECOMENDACIÓN
-          </button>
-        </div>      
+            setMotos={setMotos} />
+
+        </div>
         <div className="col-md-12 col-lg-10 col-sm-12">
           <Motos
             allProducts={allProducts}
@@ -109,8 +89,7 @@ function Compras() {
             motos={motos}
             setMotos={setMotos}
             currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
+            setCurrentPage={setCurrentPage} />
           <Confirmar
             allProducts={allProducts}
             setAllProducts={setAllProducts}
@@ -119,8 +98,12 @@ function Compras() {
             token={token} // Pasar el prop token a Confirmar
           />
         </div>
+
       </div>
     </div>
+    <div>
+        <Footer />
+    </div></>
   );
 }
 

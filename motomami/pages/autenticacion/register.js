@@ -69,43 +69,44 @@ const Register = () => {
 
   return (
     <div>
-        <img className="col-md-12" src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
-    
-    <div className={styles['formulario']} style={{ marginTop: '20px' }}>
-      
-      <h1>Registrarse</h1>
-      <form className={styles['register']} onSubmit={handleSubmit}>
-        <div>
-          <label>Nombre: </label>
-        </div>
-        <div>
-          <input type="text" value={name} onChange={(e) => setName(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }}/>
-        </div>
-        <div>
-          <label>Correo Electrónico: </label>
-        </div>
-        <div>
-          <input type="text" value={email} onChange={(e) => setEmail(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }}/>
-        </div>
-        <div>
-          <label>Contraseña: </label>
-        </div>
-        <div>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} style={{ width: '380px', height: '30px',fontSize: '18px' }} />
-        </div>
-        <div>
-          <label>Confirmar contraseña: </label>
-        </div>
-        <div>
-          <input type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)}style={{ width: '380px', height: '30px',fontSize: '18px' }} />
-        </div>
-        <button className={styles['button']}>Registrarse</button>
-          <Link href="../" legacyBehavior>
-          <button className={styles['buttonVolver']}>Volver</button>
-        </Link>        
-      </form>
-      {error && <p>Los campos no se han completado correctamente</p>}
-    </div>
+      <header className="header"  >
+        <img  src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
+      </header>
+      <div className={styles['formulario']} style={{marginTop:55}} >
+        
+        <h1>Registrarse</h1>
+        <form className={styles['register']} onSubmit={handleSubmit}>
+          <div>
+            <label className={styles["form-label"]}>Nombre: </label>
+          </div>
+          <div>
+            <input className={styles["input-field"]} type="text" value={name} onChange={(e) => setName(e.target.value)} />
+          </div>
+          <div>
+            <label className={styles["form-label"]}>Correo Electrónico: </label>
+          </div>
+          <div>
+            <input className={styles["input-field"]} type="text" value={email} onChange={(e) => setEmail(e.target.value)} />
+          </div>
+          <div>
+            <label className={styles["form-label"]}>Contraseña: </label>
+          </div>
+          <div>
+            <input className={styles["input-field"]} type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div>
+            <label className={styles["form-label"]}>Confirmar contraseña: </label>
+          </div>
+          <div>
+            <input className={styles["input-field"]} type="password" value={passwordConfirmation} onChange={(e) => setPasswordConfirmation(e.target.value)} />
+          </div>
+          <button className={styles['button']}>Registrarse</button>
+            <Link href="../" legacyBehavior>
+            <button className={styles['buttonVolver']}>Volver</button>
+          </Link>        
+        </form>
+        {error && <p>Los campos no se han completado correctamente</p>}
+      </div>
     </div>
   );
 };
