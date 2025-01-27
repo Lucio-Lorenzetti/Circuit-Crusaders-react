@@ -248,6 +248,7 @@ border: none;
 .cart-empty {
 	padding: 20px;
 	text-align: center;
+	min-width: 200px;
 }
 
 .hidden {

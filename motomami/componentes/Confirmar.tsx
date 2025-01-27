@@ -3,6 +3,9 @@ import { useRouter } from 'next/router';
 import styles from '../styles/Home.module.css';
 import axios from 'axios';
 import { Wallet, initMercadoPago } from '@mercadopago/sdk-react';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 initMercadoPago('APP_USR-121db433-4417-489d-8318-4d4710c71b46');
 
@@ -27,14 +30,15 @@ export const Confirmar = ({
           unit_price: monto,
         })),
         back_urls: {
-          success: successUrl
+          success: successUrl,
+          failure: successUrl,
+          pending: successUrl,
         },
       });
 
       setPreferenceId(response.data.id);
     } catch (error) {
       console.error('Error al crear la preferencia:', error);
-      alert('Hubo un problema al generar la preferencia. Inténtalo nuevamente.');
     }
   };
 
@@ -53,12 +57,12 @@ export const Confirmar = ({
       );
 
       if (response.status === 200) {
-        alert('El pedido se realizó correctamente.');
+        toast.success('La compra se realizó correctamente.');
         setAllProducts([]); // Limpiar estado local
       }
     } catch (error) {
       console.error('Error en enviarPedido:', error);
-      alert('Hubo un problema al procesar tu pedido.');
+      toast.error('Hubo un problema al procesar tu compra.');
     }
   };
 

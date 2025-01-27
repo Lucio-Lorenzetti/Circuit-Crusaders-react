@@ -6,6 +6,7 @@ import { Confirmar } from '../../componentes/Confirmar';
 import { FiltroEstilos } from '../../componentes/FiltroEstilos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '../../componentes/Footer';
+import { ToastContainer } from 'react-toastify';
 
 
 function Compras() {
@@ -97,6 +98,8 @@ function Compras() {
             setDivVisible={setDivVisible}
             token={token} // Pasar el prop token a Confirmar
           />
+          <ToastContainer />
+
         </div>
 
       </div>
