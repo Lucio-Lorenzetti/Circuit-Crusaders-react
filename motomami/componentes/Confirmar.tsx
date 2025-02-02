@@ -19,20 +19,20 @@ export const Confirmar = ({
   const [preferenceId, setPreferenceId] = useState(null);
   const router = useRouter();
 
-  const successUrl = `http://localhost:3000/carrito/compras?token=${encodeURIComponent(token)}`;
+  const urlBack = `https://motomami-hvtk-agusl1660-agusl1660s-projects.vercel.app/carrito/compras?token=${encodeURIComponent(token)}`;
 
   const createPreference = async () => {
     try {
-      const response = await axios.post('http://127.0.0.1:8000/rest/process_payment', {
+      const response = await axios.post('https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/process_payment', {
         items: allProducts.map(({ marca, quantity, monto }) => ({
           title: marca,
           quantity,
           unit_price: monto,
         })),
         back_urls: {
-          success: successUrl,
-          failure: successUrl,
-          pending: successUrl,
+          success: urlBack,
+          failure: urlBack,
+          pending: urlBack,
         },
       });
 
@@ -45,7 +45,7 @@ export const Confirmar = ({
   const enviarPedido = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8000/rest/pedido',
+        'https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/pedido',
         {
           motos: allProducts.map(({ nro_moto }) => ({ nro_moto })),
         },

@@ -163,13 +163,14 @@ color: white; /* Color de texto blanco para el contenido encima */
 	font-family: Arial, sans-serif;
 	box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 	width: 100%;
+	font-weight: bold;
 	max-width: 400px;
   }
   .form-label {
 	display: block;
 	margin-bottom: 8px;
 	font-size: 1rem;
-	color: #ffb727; /* Secundario */
+	color: #fcbf00; /* Secundario */
 	font-weight: bold;
 	text-transform: uppercase;
 	letter-spacing: 1px;
@@ -193,7 +194,7 @@ color: white; /* Color de texto blanco para el contenido encima */
  /* Estilo de los botones */
 .button {
 	margin-top: 20px;
-	background-color: #ffb727; /* Fondo secundario */
+	background-color: #fcbf00; /* Fondo secundario */
 	color: #000000; /* Texto oscuro */
 	font-size: 1.2rem;
 	padding: 10px 20px;

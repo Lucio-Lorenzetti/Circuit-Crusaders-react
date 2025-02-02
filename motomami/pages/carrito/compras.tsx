@@ -7,6 +7,8 @@ import { FiltroEstilos } from '../../componentes/FiltroEstilos';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from '../../componentes/Footer';
 import { ToastContainer } from 'react-toastify';
+import Head from 'next/head';
+import Error404 from '../../componentes/error404';
 
 
 function Compras() {
@@ -43,71 +45,78 @@ function Compras() {
       obtenerMotosPorEstilo();
     }
   }, [id_estilo]);
+    return (
+      <>
+      <Head>
+        <title>Motos</title>
+          <link rel="icon" href="https://i.ibb.co/yV7W6Td/logomotomami.png" />
+          <script src="/regist_serviceWorker.js" defer></script>
+          <link rel="manifest" href="/manifest.json" />
+        </Head>
+        <div className="container">
+          <div className="row">
+            <div className="col-md-12 col-sm-12">
+              <Header
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                countProducts={countProducts}
+                setCountProducts={setCountProducts}
+                isDivVisible={isDivVisible}
+                setDivVisible={setDivVisible} />
+            </div>
+            <div className="col-md-12 col-lg-2 col-sm-12">
+              <FiltroEstilos
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                token={token} // Pasar el prop token a Confirmar
+                countProducts={countProducts}
+                setCountProducts={setCountProducts}
+                isDivVisible={isDivVisible}
+                setDivVisible={setDivVisible}
+                id_estilo={id_estilo}
+                setEstiloActual={setEstiloActual}
+                motos={motos}
+                setMotos={setMotos} />
 
-  return (
-    <><div className="container">
-      <div className="row">
-        <div className="col-md-12 col-sm-12">
-          <Header
-            allProducts={allProducts}
-            setAllProducts={setAllProducts}
-            total={total}
-            setTotal={setTotal}
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
-            isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible} />
+            </div>
+            <div className="col-md-12 col-lg-10 col-sm-12">
+              <Motos
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                total={total}
+                setTotal={setTotal}
+                countProducts={countProducts}
+                setCountProducts={setCountProducts}
+                isDivVisible={isDivVisible}
+                setDivVisible={setDivVisible}
+                id_estilo={id_estilo}
+                setEstiloActual={setEstiloActual}
+                motos={motos}
+                setMotos={setMotos}
+                currentPage={currentPage}
+                setCurrentPage={setCurrentPage} />
+              <Confirmar
+                allProducts={allProducts}
+                setAllProducts={setAllProducts}
+                isDivVisible={isDivVisible}
+                setDivVisible={setDivVisible}
+                token={token} // Pasar el prop token a Confirmar
+              />
+              <ToastContainer />
+
+            </div>
+
+          </div>
         </div>
-        <div className="col-md-12 col-lg-2 col-sm-12">
-          <FiltroEstilos
-            allProducts={allProducts}
-            setAllProducts={setAllProducts}
-            total={total}
-            setTotal={setTotal}
-            token={token} // Pasar el prop token a Confirmar
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
-            isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible}
-            id_estilo={id_estilo}
-            setEstiloActual={setEstiloActual}
-            motos={motos}
-            setMotos={setMotos} />
-
-        </div>
-        <div className="col-md-12 col-lg-10 col-sm-12">
-          <Motos
-            allProducts={allProducts}
-            setAllProducts={setAllProducts}
-            total={total}
-            setTotal={setTotal}
-            countProducts={countProducts}
-            setCountProducts={setCountProducts}
-            isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible}
-            id_estilo={id_estilo}
-            setEstiloActual={setEstiloActual}
-            motos={motos}
-            setMotos={setMotos}
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage} />
-          <Confirmar
-            allProducts={allProducts}
-            setAllProducts={setAllProducts}
-            isDivVisible={isDivVisible}
-            setDivVisible={setDivVisible}
-            token={token} // Pasar el prop token a Confirmar
-          />
-          <ToastContainer />
-
-        </div>
-
-      </div>
-    </div>
-    <div>
-        <Footer />
-    </div></>
-  );
+      <div>
+          <Footer />
+      </div></>
+    );
+ 
 }
 
 export default Compras;

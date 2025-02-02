@@ -91,7 +91,10 @@ const PaginaRecomendaciones = () => {
     <>
       <Head>
         <title>Recomendacion</title>
-      </Head>
+          <link rel="icon" href="https://i.ibb.co/yV7W6Td/logomotomami.png" />
+          <script  src="/regist_serviceWorker.js"></script> 
+          <link rel="manifest" href="/manifest.json" />
+        </Head>
       <div className={styles.carousel}>
         <Carousel
           showThumbs={false} 

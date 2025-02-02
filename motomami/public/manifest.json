@@ -1,0 +1,19 @@
+{
+    "name": "Motomami",
+    "short_name": "Motomami",
+    "description": "Tu consecionaria de motos en la palma de tu mano",
+    "theme_color": "#fcbf00",
+    "background_color": "#6d4e10",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": "./",
+    "start_url": ".",
+    "lang": "es-AR",
+    "icons": [
+      {
+        "src": "https://i.ibb.co/yV7W6Td/logomotomami.png",
+        "sizes": "72x72",
+        "type": "image/png"
+      }
+    ]
+  }

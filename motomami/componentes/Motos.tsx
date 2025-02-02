@@ -65,6 +65,7 @@ export const Motos = ({
                         src={`data:image/jpeg;base64,${moto.foto}` || placeholderImage}
                         className='product-image'
                         alt='Imagen de la moto'
+                        loading="lazy"
                       />
                       <p className='price'>${moto.monto}</p>
                       <button onClick={() => addToCart(moto)} style={{ marginRight: '10px' }}>Añadir al carrito</button>
@@ -88,25 +89,3 @@ export const Motos = ({
 
   
 };
-
-export async function obtenerRespuestaChatGPT(mensaje) {
-  const url = 'https://api.openai.com/v1/chat/completions';
-  const headers = {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer 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`,
-  };
-
-  const data = {
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: mensaje }],
-    temperature: 0.7,
-  };
-
-  try {
-    const respuesta = await axios.post(url, data, { headers });
-    return respuesta.data.choices[0].message.content;
-  } catch (error) {
-    return 'Error al obtener la respuesta de ChatGPT.';
-  }
-};
-export default obtenerRespuestaChatGPT;

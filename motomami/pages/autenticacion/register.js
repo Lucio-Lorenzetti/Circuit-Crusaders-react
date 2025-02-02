@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import Head from 'next/head';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -69,6 +70,12 @@ const Register = () => {
 
   return (
     <div>
+      <Head>
+        <title>Registro</title>
+          <link rel="icon" href="https://i.ibb.co/yV7W6Td/logomotomami.png" />
+          <script  src="/regist_serviceWorker.js"></script> 
+          <link rel="manifest" href="/manifest.json" />
+        </Head>
       <header className="header"  >
         <img  src="https://i.ibb.co/yV7W6Td/logomotomami.png" alt="Logo de la concesionaria" ></img>
       </header>

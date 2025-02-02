@@ -3,10 +3,12 @@ import styles from '../../styles/Home.module.css';
 import { useRouter } from 'next/router';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Head from 'next/head';
 
 function Pedidos() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [isLoading, setIsLoading] = useState(true); // Para mostrar un estado de carga
   const itemsPerPage = 5; // Número de motos por página
   const router = useRouter();
   const { token } = router.query; // Obtener el token de la URL
@@ -14,21 +16,25 @@ function Pedidos() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/historial', {
-          headers: {
-            Authorization: `Bearer ${token}` // Agregar el token a la cabecera de la solicitud
+        if (!token) return; // Esperar hasta que el token esté disponible
+        const response = await fetch(
+          'https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/historial',
+          {
+            headers: {
+              Authorization: `Bearer ${token}`, // Agregar el token a la cabecera de la solicitud
+            },
           }
-        });
+        );
         const responseData = await response.json();
-        setData(responseData.data);
+        setData(responseData.data || []); // Manejar el caso en que `data` sea undefined
       } catch (error) {
-        console.error(error);
+        console.error('Error fetching data:', error);
+      } finally {
+        setIsLoading(false); // Marcar como cargado
       }
     };
 
-    if (token) {
-      fetchData();
-    }
+    fetchData();
   }, [token]);
 
   const imagenesCarrusel = [
@@ -76,9 +82,7 @@ function Pedidos() {
       handlePageChange(currentPage - 1);
     }
   };
-  const handleVolverAMotos = () => {
-    window.history.back()
-  };
+
   const handleNextPage = () => {
     const totalPages = Math.ceil(data.length / itemsPerPage);
     if (currentPage < totalPages) {
@@ -86,17 +90,32 @@ function Pedidos() {
     }
   };
 
+  const handleVolverAMotos = () => {
+    window.history.back();
+  };
+
+  // Mostrar un estado de carga mientras se obtienen los datos
+  if (isLoading) {
+    return <div className={styles.container}>Cargando...</div>;
+  }
+
   return (
     <div className={styles.container}>
+      <Head>
+        <title>Pedidos</title>
+          <link rel="icon" href="https://i.ibb.co/yV7W6Td/logomotomami.png" />
+          <script src="/regist_serviceWorker.js" defer></script>
+          <link rel="manifest" href="/manifest.json" />
+      </Head>
       <div className={styles.carousel}>
         <Carousel
-          showThumbs={false} 
-          autoPlay 
-          infiniteLoop 
-          showStatus={false} 
-          interval={5000} 
-          emulateTouch 
-          useKeyboardArrows 
+          showThumbs={false}
+          autoPlay
+          infiniteLoop
+          showStatus={false}
+          interval={5000}
+          emulateTouch
+          useKeyboardArrows
         >
           {imagenesCarrusel.map((imagen, index) => (
             <div key={index}>
@@ -105,18 +124,20 @@ function Pedidos() {
           ))}
         </Carousel>
       </div>
+
       <div className={styles.overlay}>
         <div className={`${styles['table-container']} ${styles['translucent-background']}`}>
           {data.length === 0 ? (
-            <table>
-              <thead>
-                <tr>
-                  <th>Usted no ha realizado ningún pedido</th>
-                  <button onClick={handleVolverAMotos} className={`${styles['button']}`}  style={{ position: 'absolute', right: '0' }}>Ir a nuestras motos</button>
-
-                </tr>
-              </thead>
-            </table>
+            <div>
+              <p>Usted no ha realizado ningún pedido.</p>
+              <button
+                onClick={handleVolverAMotos}
+                className="filter-button"
+                style={{ position: 'absolute', right: '0' }}
+              >
+                Ir a nuestras motos
+              </button>
+            </div>
           ) : (
             <>
               <table>
@@ -133,7 +154,9 @@ function Pedidos() {
                   {currentItems.map((item, index) => (
                     <tr key={index}>
                       <td>{item.fecha_pedido}</td>
-                      <td>{item.moto.marca} - {item.moto.modelo}</td>
+                      <td>
+                        {item.moto.marca} - {item.moto.modelo}
+                      </td>
                       <td>{item.moto.anio}</td>
                       <td>{item.moto.cilindrada}</td>
                       <td>{item.moto.monto}</td>
@@ -143,25 +166,31 @@ function Pedidos() {
               </table>
 
               <div className="pagination-container">
-                  <button className="pagination-button"  onClick={handlePreviousPage} disabled={currentPage === 1}>
-                    Anterior
-                  </button>
-                {/*<span>{currentPage} de {Math.ceil(data.length / itemsPerPage)}</span>*/}
-                  <button className="pagination-button" onClick={handleNextPage} disabled={currentPage === Math.ceil(data.length / itemsPerPage)}>
-                    Siguiente
-                  </button>
-
+                <button
+                  className="pagination-button"
+                  onClick={handlePreviousPage}
+                  disabled={currentPage === 1}
+                >
+                  Anterior
+                </button>
+                <button
+                  className="pagination-button"
+                  onClick={handleNextPage}
+                  disabled={currentPage === Math.ceil(data.length / itemsPerPage)}
+                >
+                  Siguiente
+                </button>
               </div>
-              <div  style={{ display: 'flex', marginTop: '20px' }}>
-                <button onClick={handleVolverAMotos} className="filter-button" >Ir a nuestras motos</button>
+              <div style={{ display: 'flex', marginTop: '20px' }}>
+                <button onClick={handleVolverAMotos} className="filter-button">
+                  Ir a nuestras motos
+                </button>
               </div>
             </>
           )}
         </div>
-        </div>
-
+      </div>
     </div>
-    
   );
 }
 

@@ -536,3 +536,28 @@ border: none;
 	color: #6d4e10;
   }
   
+  /*Error*/
+  .contenedorError404 {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.mensajeError404 {
+	font-weight: normal;
+	font-size: 14px;
+	font-family: system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+}
+.error404 {
+	margin-right: 20px;
+	font-size: 24px;
+	padding-right: 20px;
+	border-right: 1px solid white;
+	font-family: system-ui,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+}
