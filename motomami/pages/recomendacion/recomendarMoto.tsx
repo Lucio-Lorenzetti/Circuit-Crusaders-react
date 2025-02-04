@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from '../../styles/Home.module.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { GoogleGenerativeAI } from "@google/generative-ai";
-import config from './../../config';
+import config from '././../../config';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import Head from 'next/head';
