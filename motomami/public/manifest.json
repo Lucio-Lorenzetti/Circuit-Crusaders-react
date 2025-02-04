@@ -8,12 +8,60 @@
     "orientation": "portrait",
     "scope": "./",
     "start_url": ".",
-    "lang": "es-AR",
+    "lang": "es-CO",
     "icons": [
       {
-        "src": "https://i.ibb.co/yV7W6Td/logomotomami.png",
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_72,h_72/Motomami/rr2oyewknncyw4xoqqfd.png",
         "sizes": "72x72",
         "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_128,h_128/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "128x128",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_144,h_144/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "144x144",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_152,h_152/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "152x152",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_192,h_192/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_256,h_256/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "256x256",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_384,h_384/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "384x384",
+        "type": "image/png"
+      },
+      {
+        "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_512,h_512/Motomami/rr2oyewknncyw4xoqqfd.png",
+        "sizes": "512x512",
+        "type": "image/png"
       }
-    ]
+    ],
+    "screenshots": [
+    {
+      "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_1080,h_1920/Motomami/rr2oyewknncyw4xoqqfd.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "https://res.cloudinary.com/dchvbp9aa/image/upload/w_1080,h_1920/Motomami/rr2oyewknncyw4xoqqfd.png",
+      "sizes": "1080x1920",
+      "type": "image/png"
+    }
+  ]
   }

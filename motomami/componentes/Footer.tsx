@@ -39,7 +39,7 @@ const Footer = () => {
 
       <div className="footer-bottom">
         
-        <p>&copy; 2025 Agustin Lelli y Lucio Andres Lorenzetti. Todos los derechos reservados.</p>
+        <p>&copy; 2025 Agustin Lelli y Lucio Adriel Lorenzetti. Todos los derechos reservados.</p>
         <p>Desarrollado con 💛 en Bahía Blanca</p>
 
         <button className="contact-button">Contáctanos</button>
