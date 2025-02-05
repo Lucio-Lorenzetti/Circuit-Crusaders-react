@@ -31,7 +31,7 @@ const PaginaRecomendaciones = () => {
       // Usa process.env.API_KEY para mayor seguridad
       const genAI = new GoogleGenerativeAI(config.geminiApiKey);
       const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-      const prompt = mensaje;
+      const prompt = "Quiero que me recomiendes un modelo de moto con estas caracteristicas "+mensaje+" en pocas palabras para comprarla";
   
       // Utiliza generateContentStream para obtener la respuesta en fragmentos
       const result = await model.generateContentStream(prompt);
@@ -116,7 +116,7 @@ const PaginaRecomendaciones = () => {
         <div className={`${styles['table-container']} ${styles['translucent-background']}`}>
           <h1 className="filter-title">Obtener una Recomendación</h1>
           <div>
-            <label className={styles["form-label"]}>Ingrese sus preferencias:</label>
+            <label className={styles["form-label"]}>Ingrese las caracteristicas que quiere en su moto:</label>
           </div>
           <div>
             <textarea
