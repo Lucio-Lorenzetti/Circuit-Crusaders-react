@@ -38,7 +38,7 @@ const handleRecuperarPedidos = () => {
   };
 
   useEffect(() => {
-    fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/estilos')
+    fetch('https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/estilos')
       .then((response) => response.json())
       .then((estilos) => setEstilos(estilos));
   }, []);

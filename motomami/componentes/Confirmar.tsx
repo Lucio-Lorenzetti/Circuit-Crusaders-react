@@ -19,10 +19,12 @@ export const Confirmar = ({
   const [preferenceId, setPreferenceId] = useState(null);
   const router = useRouter();
 
-  const urlBack = `https://motomami-hvtk-agusl1660-agusl1660s-projects.vercel.app/carrito/compras?token=${encodeURIComponent(token)}`;
+  const urlBack = `https://circuit-crusaders-react-agusl1660-agusl1660s-projects.vercel.app/carrito/compras?token=${encodeURIComponent(token)}`;
 
   const createPreference = async () => {
     try {
+      localStorage.setItem("productosPendientes", JSON.stringify(allProducts)); // Guardar en localStorage
+
       const response = await axios.post('https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/process_payment', {
         items: allProducts.map(({ marca, quantity, monto }) => ({
           title: marca,
@@ -42,20 +44,23 @@ export const Confirmar = ({
     }
   };
 
-  const enviarPedido = async () => {
+  const enviarPedido = async (productos) => {
+    const pedido = {
+      motos: productos.map((moto) => ({
+        nro_moto: moto.nro_moto,
+      })),
+    };
+  
     try {
-      const response = await axios.post(
-        'https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/pedido',
-        {
-          motos: allProducts.map(({ nro_moto }) => ({ nro_moto })),
+      const response = await fetch('https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/pedido', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`, // Usar `` para interpolar el token
         },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
+        body: JSON.stringify(pedido),
+      });
+      
       if (response.status === 200) {
         toast.success('La compra se realizó correctamente.');
         setAllProducts([]); // Limpiar estado local
@@ -65,27 +70,32 @@ export const Confirmar = ({
       toast.error('Hubo un problema al procesar tu compra.');
     }
   };
-
+  
   useEffect(() => {
     const storedProducts = localStorage.getItem('allProducts');
     if (storedProducts) {
       setAllProducts(JSON.parse(storedProducts));
     }
+    console.log('allProducts:', allProducts);
   }, [setAllProducts]);
-
+  
   useEffect(() => {
     // Verificar que `router.query` esté disponible y tenga el estado
     if (router.isReady) {
       const query = new URLSearchParams(router.asPath.split('?')[1]);
       const status = query.get('status'); // Obtener el estado del pago
-
+  
       if (status === 'approved') {
-        enviarPedido(); 
-        router.push(`/carrito/compras?token=${encodeURIComponent(token)}`); // Redirigir manteniendo el token
-      
+        const productosGuardados = localStorage.getItem("productosPendientes");
+        if (productosGuardados) {
+          setAllProducts(JSON.parse(productosGuardados)); // Restaurar productos
+          enviarPedido(JSON.parse(productosGuardados)); // Pasar productos a enviarPedido()
+          localStorage.removeItem("productosPendientes"); // Limpiar después del uso
+        }
       }
     }
-  }, [router.isReady, router.asPath]);
+  }, [router.isReady, router.asPath, token]); // Agregar token a las dependencias del useEffect
+  
 
   return (
     <div>
@@ -140,5 +150,3 @@ export const Confirmar = ({
     </div>
   );
 };
-
-export default Confirmar;

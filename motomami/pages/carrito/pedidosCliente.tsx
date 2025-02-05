@@ -18,7 +18,7 @@ function Pedidos() {
       try {
         if (!token) return; // Esperar hasta que el token esté disponible
         const response = await fetch(
-          'https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/historial',
+          'https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/historial',
           {
             headers: {
               Authorization: `Bearer ${token}`, // Agregar el token a la cabecera de la solicitud

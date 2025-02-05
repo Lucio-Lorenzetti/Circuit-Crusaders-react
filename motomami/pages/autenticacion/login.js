@@ -25,7 +25,7 @@ const Login = () => {
 
     try {
       // Realizar la solicitud POST al servidor para autenticar al usuario
-      const response = await fetch('https://circuit-crusaders-laravel-cjnz-agusl1660-agusl1660s-projects.vercel.app/rest/login', {
+      const response = await fetch('https://circuit-crusaders-laravel-cjnz-w6idqpd3d-agusl1660s-projects.vercel.app/rest/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
